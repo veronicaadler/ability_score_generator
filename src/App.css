@@ -4,14 +4,11 @@
 
 .jumbotron {
   background-color: #FFF4EC;
+  border-bottom: 2px solid #282322;
 }
 
 .logotitle {
   font-size: 1.5rem;
-}
-
-.navbar {
-  font-family: 'Cutive Mono', 'sans-serif'
 }
 
 .warrior {
@@ -22,3 +19,9 @@ h3 {
   font-family: "Caveat", "sans-serif";
   font-size: 2rem;
 }
+
+.startbutton {
+  background-color: #ca615c;
+  color: black;
+}
+

@@ -1,28 +1,11 @@
 import React from 'react';
-import { Jumbotron, Container, Row, Col, Button } from 'reactstrap';
-import NavBar from "./Navbar"
+import { Container, Row, Col, Button } from 'reactstrap';
+import Header from "./Header"
 
 function HomePage() {
     return (
         <div>
-            <Jumbotron fluid className="jumbotron">
-                <Container fluid>
-                    <Row className="align-items-center">
-                        <Col style={{fontFamily: 'Caveat, sans-serif'}} xs="8" className="">
-                        <img 
-                                src="assets/logo.png"
-                                alt="logo"
-                                className="img-fluid logo"
-                                style={{maxWidth: 60, marginRight: 5}}
-                            />
-                            <h1 className="logotitle align-self-end" style={{display: 'inline-block'}}>D&D 3.5 Ability Score Generator</h1>
-                        </Col>
-                        <Col xs="4">
-                            <NavBar />
-                        </Col>
-                    </Row>
-                </Container>
-            </Jumbotron>
+            <Header />
             <Container fluid>
                 <Row>
                     <Col className="p-0">
@@ -33,11 +16,11 @@ function HomePage() {
                     />
                     </Col>
                     <Col className="text-center">
-                        <h3 className="mt-5" style={{fontSize: '3rem'}}>Build your characters with ease.</h3>
-                        <Button size="lg">Get Started</Button>
+                        <h3 className=" mb-4" style={{fontSize: '3rem', marginTop: '13rem'}}>Build your characters with ease.</h3>
+                        <p className="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <Button style={{backgroundColor: '#282322', color: 'white'}} size="lg" className="mt-2">Get Started</Button>
                     </Col>
                 </Row>
-
             </Container>
         </div>
     )

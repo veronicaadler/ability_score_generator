@@ -7,7 +7,7 @@ function NavBar() {
 
     return (
         <div>
-            <Navbar expand="sm" className="navbar">
+            <Navbar expand="sm" className="navbar navbar-light">
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar className="justify-content-end">
             <Nav navbar>
