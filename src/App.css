@@ -11,10 +11,6 @@
   font-size: 1.5rem;
 }
 
-.warrior {
-  display: block;
-}
-
 h3 {
   font-family: "Caveat", "sans-serif";
   font-size: 2rem;
@@ -23,5 +19,14 @@ h3 {
 .startbutton {
   background-color: #ca615c;
   color: black;
+}
+
+.navbar-header{
+  text-align:center;
+}
+
+.navbar-toggle {
+  float: none;
+  margin-right:0;
 }
 
