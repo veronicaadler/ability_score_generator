@@ -1,5 +1,5 @@
-import React from 'react';
 import { Jumbotron, Container, Row, Col } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 import NavBar from "./Navbar"
 
 function Header() {
@@ -10,6 +10,7 @@ function Header() {
                         <Col 
                             style={{fontFamily: 'Caveat, sans-serif'}}  
                             className="col-12 col-sm-8">
+                        <NavLink to="/" className="logolink">
                         <img 
                                 src="assets/logo.png"
                                 alt="logo"
@@ -17,6 +18,7 @@ function Header() {
                                 style={{maxWidth: 60, marginRight: 5}}
                             />
                             <h1 className="logotitle" style={{display: 'inline-block'}}>D&D v3.5 Ability Score Generator</h1>
+                        </NavLink>
                         </Col>
                         <Col style={{textAlign: 'center'}}>
                             <NavBar />

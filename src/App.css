@@ -30,3 +30,10 @@ h3 {
   margin-right:0;
 }
 
+.logolink {
+  color: #282322
+}
+
+.logolink:hover {
+  color: black;
+}
