@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Collapse, Navbar, NavbarToggler, Nav, NavItem, NavLink } from "reactstrap";
 
 function NavBar() {
