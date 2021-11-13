@@ -6,7 +6,7 @@ function NavBar() {
     const toggle = () => setIsOpen(!isOpen); 
 
     return (
-        <div className="text-align-center">
+        <div>
             <Navbar expand="md" className="navbar navbar-light">
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar className="justify-content-end">
