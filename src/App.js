@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import './App.css';
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Create from "./components/Create";
+import Auto from "./components/Auto";
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,7 +11,8 @@ import {
 } from "react-router-dom";
 
 
-function App() {
+const App = () => {
+  const [name, setName] = useState('');
 
   return (
     <Router>
@@ -21,7 +24,10 @@ function App() {
               <Home />
             </Route>
             <Route path="/create">
-              <Create />
+              <Create inputName={name => setName(name)}/>
+            </Route>
+            <Route path="/auto">
+              <Auto charactername={name}/>
             </Route>
           </Switch>
         </div>

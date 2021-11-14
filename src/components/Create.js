@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Container, Row, Col, Button, Form, FormText, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from "react-router-dom";
 
-const Create = () => {
-    const [name, setName] = useState('');
+const Create = ({ inputName }) => {
+
     const [message, setMessage] = useState({
         auto: false,
         manual: false
@@ -13,7 +13,7 @@ const Create = () => {
     if (message.manual) {
         url = "/manual"
     } else {
-        url = "/autogenerate"
+        url = "/auto"
     }
 
     return (
@@ -39,8 +39,7 @@ const Create = () => {
                                     name="name"
                                     id="name"
                                     required
-                                    value={name}
-                                    onChange={(event) => setName(event.target.value)}
+                                    onChange={(event) => inputName(event.target.value)}
                                 />
                             </FormGroup>
                             <FormGroup tag="fieldset" className="mt-4">
