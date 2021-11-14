@@ -9,7 +9,7 @@ function Header() {
                     <Row className="align-items-center">
                         <Col 
                             style={{fontFamily: 'Caveat, sans-serif'}}  
-                            className="col-10 col-sm-9">
+                            className="col-10 col-sm-9 col-md-7">
                         <NavLink to="/" className="logolink">
                         <img 
                                 src="assets/logo.png"
