@@ -1,9 +1,13 @@
+import { useEffect, useState } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
 import Abilities from '../shared/Abilities';
 
 const Auto = ({charactername}) => {
 
-    function rollDice() {
+
+    const [abilityScores, setAbilityScores] = useState([])
+
+    useEffect(() => {
         const numberOfAbilityScores = Abilities.length; //takes the number of ability scores from the Abilities array
         console.log(numberOfAbilityScores);
         const totalAbilityScores = []; //will contain the values of every ability score
@@ -23,10 +27,8 @@ const Auto = ({charactername}) => {
             totalAbilityScores.push(initialAbilityScore)
         } //adds each ability score to the totalAbilityScores
         console.log(totalAbilityScores)
-
-
-
-    }
+        setAbilityScores(totalAbilityScores);
+    }, [])
 
     return (
         <div>
@@ -44,7 +46,13 @@ const Auto = ({charactername}) => {
                         <p>{ability.subtitle}</p>
                     </Col>
                 ))}
-                <Button onClick={rollDice}></Button>
+                </Row>
+                <Row>
+                {abilityScores.map((score) => (
+                    <Col>
+                        <p>{score}</p>
+                    </Col>
+                ))}
                 </Row>
             </Container>
         </div>
