@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { Container, Row, Col, Button, Form, FormText, FormGroup, Label, Input } from 'reactstrap';
+import Races from '../shared/Races';
+import Classes from '../shared/Classes';
+import { Container, Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from "react-router-dom";
 
 const Create = ({ inputName }) => {
@@ -8,6 +10,8 @@ const Create = ({ inputName }) => {
         auto: false,
         manual: false
     })
+
+    const [modifiers, setModifiers] = useState(true);
 
     let url = ""
     if (message.manual) {
@@ -42,7 +46,7 @@ const Create = ({ inputName }) => {
                                     onChange={(event) => inputName(event.target.value)}
                                 />
                             </FormGroup>
-                            <FormGroup tag="fieldset" className="mt-4">
+                            <FormGroup tag="fieldset" className="mt-4 mb-4">
                                 <legend style={{fontFamily: "Caveat, sans-serif", fontSize: "1.5rem"}}>How would you like to generate your scores?</legend>
                                 {message.auto &&
                                     <p>Have us calculate your ability scores entirely for you, replicating dice rolls.</p>
@@ -69,6 +73,65 @@ const Create = ({ inputName }) => {
                                     <Label check for="gentype2">Manual</Label>
                                 </FormGroup>
                             </FormGroup>
+                            <FormGroup check>
+                                <Input
+                                    id="raceclass"
+                                    name="raceclass"
+                                    type="checkbox"
+                                    checked={modifiers}
+                                    onClick={() => setModifiers(!modifiers)}
+                                />
+                                <Label
+                                    check
+                                    for="raceclass"
+                                    className="mb-3"
+                                > Apply Race and Class Modifiers
+                                </Label>
+                            </FormGroup>
+                            {modifiers &&
+                            <div>
+                                <FormGroup className="mb-3">
+                                    <Label 
+                                        for="raceselector"
+                                    >
+                                    Select Race   
+                                    </Label>
+                                    <Col className="col-12 col-sm-8 col-md-6">
+                                        <Input
+                                            id="raceselector"
+                                            name="raceselector"
+                                            type="select"
+                                        >
+                                        {Races.map((race) => (
+                                            <option key={race.id}>
+                                                {race.title}
+                                            </option>
+                                        ))}
+                                        </Input>
+                                    </Col>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label 
+                                        for="classselector"
+                                    >
+                                    Select Class  
+                                    </Label>
+                                    <Col className="col-12 col-sm-8 col-md-6">
+                                        <Input
+                                            id="classselector"
+                                            name="classselector"
+                                            type="select"
+                                        >
+                                        {Classes.map((choice) => (
+                                            <option key={choice.id}>
+                                                {choice.title}
+                                            </option>
+                                        ))}
+                                        </Input>
+                                    </Col>
+                                </FormGroup>
+                            </div>
+                            }
                         </Form>
                         <Link to={url}>
                         <Button 
