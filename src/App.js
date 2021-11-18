@@ -3,7 +3,7 @@ import './App.css';
 import Home from "./components/Home";
 import Header from "./components/Header";
 import Create from "./components/Create";
-import Auto from "./components/Auto";
+import Auto from "./components/Generate";
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,6 +13,9 @@ import {
 
 const App = () => {
   const [name, setName] = useState('');
+  const [classTitle, setClassTitle] = useState('');
+  const [race, setRace] = useState('')
+
 
   return (
     <Router>
@@ -24,10 +27,13 @@ const App = () => {
               <Home />
             </Route>
             <Route path="/create">
-              <Create inputName={name => setName(name)}/>
+              <Create 
+                inputName={name => setName(name)} 
+                inputClass={classTitle => setClassTitle(classTitle)} 
+                inputRace={race => setRace(race)}/>
             </Route>
-            <Route path="/auto">
-              <Auto charactername={name}/>
+            <Route path="/generate">
+              <Auto charactername={name} characterclass={classTitle} characterrace={race} />
             </Route>
           </Switch>
         </div>

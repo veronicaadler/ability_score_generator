@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import Abilities from '../shared/Abilities';
 
-const Auto = ({charactername}) => {
+const Generate = ({charactername, characterclass, characterrace}) => {
 
 
     const [abilityScores, setAbilityScores] = useState([])
 
     useEffect(() => {
+        function rollDice() {
         const numberOfAbilityScores = Abilities.length; //takes the number of ability scores from the Abilities array
         console.log(numberOfAbilityScores);
         const totalAbilityScores = []; //will contain the values of every ability score
@@ -28,6 +29,8 @@ const Auto = ({charactername}) => {
         } //adds each ability score to the totalAbilityScores
         console.log(totalAbilityScores)
         setAbilityScores(totalAbilityScores);
+    }
+        rollDice()
     }, [])
 
     return (
@@ -35,7 +38,8 @@ const Auto = ({charactername}) => {
             <Container fluid>
                 <Row>
                     <Col className="text-center mb-5 mt-4">
-                        <h1>{charactername}'s Ability Scores</h1>
+                        <h1>{charactername} {characterclass} {characterrace} 's Ability Scores</h1>
+
 
                     </Col>
                 </Row>
@@ -59,4 +63,4 @@ const Auto = ({charactername}) => {
       );
 }
  
-export default Auto;
+export default Generate;
