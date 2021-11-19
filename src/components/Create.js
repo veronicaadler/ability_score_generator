@@ -1,10 +1,25 @@
-import { useState } from 'react';
-import Races from '../shared/Races';
-import Classes from '../shared/Classes';
+import { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from "react-router-dom";
 
-const Create = ({ inputName, inputClass, inputRace }) => {
+const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => {
+
+    const [possibleClasses, setPossibleClasses] = useState([]);
+    const [possibleRaces, setPossibleRaces] = useState([]);
+    const [isPending, setIsPending] = useState(true); //we will use this to later create loading animation
+
+    useEffect(() => {
+        Promise.all([
+            fetch('http://localhost:8000/classes'),
+            fetch('http://localhost:8000/races')
+        ])
+            .then(([res1, res2]) => Promise.all([res1.json(), res2.json()])) //gets the response object and passes the json into a Javascript object.  Returns a promise as this takes some time.
+            .then(([data1, data2]) => { //here we are using the data retrieved from the fetch
+                setPossibleClasses(data1);
+                setPossibleRaces(data2);
+                setIsPending(false);
+            })
+    }, []);
 
     return (
         <div>
@@ -28,7 +43,7 @@ const Create = ({ inputName, inputClass, inputRace }) => {
                                     type="text"
                                     name="name"
                                     id="name"
-                                    required
+                                    value={name}
                                     onChange={(event) => inputName(event.target.value)}
                                 />
                             </FormGroup>
@@ -42,9 +57,10 @@ const Create = ({ inputName, inputClass, inputRace }) => {
                                             id="raceselector"
                                             name="raceselector"
                                             type="select"
+                                            value={race}
                                             onChange={(event) => inputRace(event.target.value)}
                                         >
-                                        {Races.map((race) => (
+                                        {possibleRaces.map((race) => (
                                             <option key={race.id}>
                                                 {race.title}
                                             </option>
@@ -61,9 +77,10 @@ const Create = ({ inputName, inputClass, inputRace }) => {
                                             id="classselector"
                                             name="classselector"
                                             type="select"
+                                            value={classname}
                                             onChange={(event) => inputClass(event.target.value)}
                                         >
-                                        {Classes.map((choice) => (
+                                        {possibleClasses.map((choice) => (
                                             <option key={choice.id}>
                                                 {choice.title}
                                             </option>

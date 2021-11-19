@@ -30,7 +30,10 @@ const App = () => {
               <Create 
                 inputName={name => setName(name)} 
                 inputClass={classTitle => setClassTitle(classTitle)} 
-                inputRace={race => setRace(race)}/>
+                inputRace={race => setRace(race)}
+                name={name}
+                classname={classTitle}
+                race={race}/>
             </Route>
             <Route path="/generate">
               <Auto charactername={name} characterclass={classTitle} characterrace={race} />
