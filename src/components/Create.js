@@ -1,149 +1,123 @@
-import { useState } from 'react';
-import Races from '../shared/Races';
-import Classes from '../shared/Classes';
+import { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from "react-router-dom";
 
-const Create = ({ inputName }) => {
+const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => {
 
-    const [message, setMessage] = useState({
-        auto: false,
-        manual: false
-    })
+    const [possibleClasses, setPossibleClasses] = useState([]);
+    const [possibleRaces, setPossibleRaces] = useState([]);
+    const [isPending, setIsPending] = useState(true); //we will use this to later create loading animation
+    const [error, setError] = useState(null);
 
-    const [modifiers, setModifiers] = useState(true);
+    useEffect(() => {
+        Promise.all([
+            fetch('http://localhost:8000/classes'),
+            fetch('http://localhost:8000/races')
+        ])
+                .then(([res1, res2]) => {
+                if (!res1.ok || !res2.ok) {
+                    throw Error('could not fetch the data needed for this page.')
+                } else {
+                    return [res1, res2]
+                }}) 
+                .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))//gets the response object and passes the json into a Javascript object.  Returns a promise as this takes some time.
+                .then(([data1, data2]) => { //here we are using the data retrieved from the fetch
+                    setPossibleClasses(data1);
+                    setPossibleRaces(data2);
+                    setIsPending(false);
+                    setError(null);
+                })
+                .catch(err => { //catches any network errors, like not being able to connect to server
+                    setError(err.message);
+                    setIsPending(false);
+                })
+    }, []);
 
-    let url = ""
-    if (message.manual) {
-        url = "/manual"
-    } else {
-        url = "/auto"
-    }
-
-    return (
-        <div>
-            <Container fluid>
-                <Row>
-                    <Col
-                        className="p-0 col-12 col-md-7 col-lg-6"
-                    >
-                    <img
-                        src="assets/greenfighter.jpg"
-                        alt="warrior"
-                        className="img-fluid"
-                    />
-                    </Col>
-                    <Col
-                        className="mt-5">
-                        <Form>
-                            <FormGroup>
-                                <Label for="name">Character Name: </Label>
-                                <Input
-                                    type="text"
-                                    name="name"
-                                    id="name"
-                                    required
-                                    onChange={(event) => inputName(event.target.value)}
-                                />
-                            </FormGroup>
-                            <FormGroup tag="fieldset" className="mt-4 mb-4">
-                                <legend style={{fontFamily: "Caveat, sans-serif", fontSize: "1.5rem"}}>How would you like to generate your scores?</legend>
-                                {message.auto &&
-                                    <p>Have us calculate your ability scores entirely for you, replicating dice rolls.</p>
-                                }
-                                {message.manual &&
-                                    <p>Want to roll your own dice?  Give us your roll numbers and we'll use them to calculate your ability scores.</p>
-                                }
-                                <FormGroup check>
-                                    <Input 
-                                        type="radio"
-                                        name="gentype"
-                                        id="gentype1"
-                                        onClick={() => setMessage({auto: true, manual: false})}
-                                    />
-                                    <Label check for="gentype1">Auto</Label>
-                                </FormGroup>
-                                <FormGroup check>
-                                    <Input 
-                                        type="radio"
-                                        name="gentype"
-                                        id="gentype2"
-                                        onClick={() => setMessage({auto: false, manual: true})}
-                                    />
-                                    <Label check for="gentype2">Manual</Label>
-                                </FormGroup>
-                            </FormGroup>
-                            <FormGroup check>
-                                <Input
-                                    id="raceclass"
-                                    name="raceclass"
-                                    type="checkbox"
-                                    checked={modifiers}
-                                    onClick={() => setModifiers(!modifiers)}
-                                />
-                                <Label
-                                    check
-                                    for="raceclass"
-                                    className="mb-3"
-                                > Apply Race and Class Modifiers
+    if (error) {
+        return (
+          <div>{ error }</div>
+          )}
+    if (isPending) {
+         return (
+         <div>Loading...</div>
+         )}
+    else {
+        return (
+                <Container fluid>
+            <Row>
+                <Col
+                    className="p-0 col-12 col-md-7 col-lg-6"
+                >
+                <img
+                    src="assets/greenfighter.jpg"
+                    alt="warrior"
+                    className="img-fluid"
+                />
+                </Col>
+                <Col
+                    className="mt-5">
+                    <Form>
+                        <FormGroup className="mb-4">
+                            <Label for="name">Character Name: </Label>
+                            <Input
+                                type="text"
+                                name="name"
+                                id="name"
+                                value={name}
+                                onChange={(event) => inputName(event.target.value)}
+                            />
+                        </FormGroup>
+                        <FormGroup className="mb-3">
+                                <Label 
+                                    for="raceselector"
+                                >
+                                Select Race   
                                 </Label>
+                                    <Input
+                                        id="raceselector"
+                                        name="raceselector"
+                                        type="select"
+                                        value={race}
+                                        onChange={(event) => inputRace(event.target.value)}
+                                    >
+                                    {possibleRaces.map((race) => (
+                                        <option key={race.id}>
+                                            {race.title}
+                                        </option>
+                                    ))}
+                                    </Input>
                             </FormGroup>
-                            {modifiers &&
-                            <div>
-                                <FormGroup className="mb-3">
-                                    <Label 
-                                        for="raceselector"
+                            <FormGroup>
+                                <Label 
+                                    for="classselector"
+                                >
+                                Select Class  
+                                </Label>
+                                    <Input
+                                        id="classselector"
+                                        name="classselector"
+                                        type="select"
+                                        value={classname}
+                                        onChange={(event) => inputClass(event.target.value)}
                                     >
-                                    Select Race   
-                                    </Label>
-                                    <Col className="col-12 col-sm-8 col-md-6">
-                                        <Input
-                                            id="raceselector"
-                                            name="raceselector"
-                                            type="select"
-                                        >
-                                        {Races.map((race) => (
-                                            <option key={race.id}>
-                                                {race.title}
-                                            </option>
-                                        ))}
-                                        </Input>
-                                    </Col>
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label 
-                                        for="classselector"
-                                    >
-                                    Select Class  
-                                    </Label>
-                                    <Col className="col-12 col-sm-8 col-md-6">
-                                        <Input
-                                            id="classselector"
-                                            name="classselector"
-                                            type="select"
-                                        >
-                                        {Classes.map((choice) => (
-                                            <option key={choice.id}>
-                                                {choice.title}
-                                            </option>
-                                        ))}
-                                        </Input>
-                                    </Col>
-                                </FormGroup>
-                            </div>
-                            }
-                        </Form>
-                        <Link to={url}>
-                        <Button 
-                            style={{backgroundColor: '#282322', color: 'white'}} 
-                            size="lg" 
-                            className="mt-5 float-end">Next</Button>
-                        </Link>
-                    </Col>
-                </Row>
-            </Container>
-        </div>
-      );
+                                    {possibleClasses.map((choice) => (
+                                        <option key={choice.id}>
+                                            {choice.title}
+                                        </option>
+                                    ))}
+                                    </Input>
+                            </FormGroup>
+                    </Form>
+                    <Link to="/generate">
+                    <Button 
+                        style={{backgroundColor: '#282322', color: 'white'}} 
+                        size="lg" 
+                        className="mt-5 float-end">Next</Button>
+                    </Link>
+                </Col>
+            </Row>
+        </Container>
+      )};
 }
  
 export default Create;
