@@ -4,8 +4,29 @@ import Abilities from '../shared/Abilities';
 
 const Generate = ({charactername, characterclass, characterrace}) => {
 
+    const [abilities, setAbilities] = useState([]);
+    const [abilityScores, setAbilityScores] = useState([]);
+    const [isPending, setIsPending] = useState(true); //we will use this to later create loading animation
+    const [error, setError] = useState(null);
 
-    const [abilityScores, setAbilityScores] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:8000/abilities')
+            .then(res => {
+                if(!res.ok) {
+                    throw Error('could not fetch the required resources.')
+                }
+                return res.json();
+            })
+            .then(data => {
+                setAbilities(data);
+                setIsPending(false);
+                setError(null)
+            })
+            .catch(err => {
+                setIsPending(false);
+                setError(err.message)
+            })
+    }, [])
 
     useEffect(() => {
         function rollDice() {
@@ -33,21 +54,28 @@ const Generate = ({charactername, characterclass, characterrace}) => {
         rollDice()
     }, [])
 
+    if (error) {
+        return (
+          <div>{ error }</div>
+          )}
+    if (isPending) {
+         return (
+         <div>Loading...</div>
+         )}
+    else {
     return (
         <div>
             <Container fluid>
                 <Row>
                     <Col className="text-center mb-5 mt-4">
                         <h1>{charactername} {characterclass} {characterrace} 's Ability Scores</h1>
-
-
                     </Col>
                 </Row>
                 <Row className="text-center">
-                {Abilities.map((ability) => (
-                    <Col key={ability.id} className="col-12 col-sm-6 col-md-2">
-                        <h3>{ability.title}</h3>
-                        <p>{ability.subtitle}</p>
+                {abilities.map((a) => (
+                    <Col key={a.id} className="col-12 col-sm-6 col-md-2">
+                        <h3>{a.title}</h3>
+                        <p>{a.subtitle}</p>
                     </Col>
                 ))}
                 </Row>
@@ -60,7 +88,7 @@ const Generate = ({charactername, characterclass, characterrace}) => {
                 </Row>
             </Container>
         </div>
-      );
+      )};
 }
  
 export default Generate;
