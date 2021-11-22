@@ -80,6 +80,7 @@ const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => 
                                         value={race}
                                         onChange={(event) => inputRace(event.target.value)}
                                     >
+                                    <option value="" disabled hidden>Choose</option>
                                     {possibleRaces.map((race) => (
                                         <option key={race.id}>
                                             {race.title}
@@ -100,6 +101,7 @@ const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => 
                                         value={classname}
                                         onChange={(event) => inputClass(event.target.value)}
                                     >
+                                    <option value="" disabled hidden>Choose</option>
                                     {possibleClasses.map((choice) => (
                                         <option key={choice.id}>
                                             {choice.title}

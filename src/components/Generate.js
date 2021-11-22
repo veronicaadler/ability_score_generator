@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Container, Row, Col } from 'reactstrap';
-import Abilities from '../shared/Abilities';
+import { Container, Row, Col, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const Generate = ({charactername, characterclass, characterrace}) => {
 
@@ -8,6 +7,8 @@ const Generate = ({charactername, characterclass, characterrace}) => {
     const [abilityScores, setAbilityScores] = useState([]);
     const [isPending, setIsPending] = useState(true); //we will use this to later create loading animation
     const [error, setError] = useState(null);
+    const [isAscendingChecked, setAscending] = useState(false);
+    const [isDescendingChecked, setDescending] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:8000/abilities')
@@ -30,7 +31,7 @@ const Generate = ({charactername, characterclass, characterrace}) => {
 
     useEffect(() => {
         function rollDice() {
-        const numberOfAbilityScores = Abilities.length; //takes the number of ability scores from the Abilities array
+        const numberOfAbilityScores = abilities.length; //takes the number of ability scores from the Abilities array
         console.log(numberOfAbilityScores);
         const totalAbilityScores = []; //will contain the values of every ability score
         for (let i = 0; i < numberOfAbilityScores; i++) { //loops through for the value of number of ability scores
@@ -52,7 +53,19 @@ const Generate = ({charactername, characterclass, characterrace}) => {
         setAbilityScores(totalAbilityScores);
     }
         rollDice()
-    }, [])
+    }, [abilities.length])
+
+    const sortScoresAscending = () => {
+        setAbilities(abilityScores.sort((a, b) => a-b));
+        setAscending(!isAscendingChecked);
+        setDescending(false);
+    }
+
+    const sortScoresDescending = () => {
+        setAbilities(abilityScores.sort((a, b) => b-a));
+        setDescending(!isDescendingChecked);
+        setAscending(false);
+    }
 
     if (error) {
         return (
@@ -68,23 +81,41 @@ const Generate = ({charactername, characterclass, characterrace}) => {
             <Container fluid>
                 <Row>
                     <Col className="text-center mb-5 mt-4">
-                        <h1>{charactername} {characterclass} {characterrace} 's Ability Scores</h1>
+                        <h1>{`${charactername} the ${characterclass} ${characterrace}'s Ability Scores`}</h1>
                     </Col>
                 </Row>
-                <Row className="text-center">
-                {abilities.map((a) => (
-                    <Col key={a.id} className="col-12 col-sm-6 col-md-2">
-                        <h3>{a.title}</h3>
-                        <p>{a.subtitle}</p>
-                    </Col>
-                ))}
-                </Row>
-                <Row>
+                <Row className="mb-5">
                 {abilityScores.map((score) => (
-                    <Col>
+                    <Col className="text-center">
                         <p>{score}</p>
                     </Col>
                 ))}
+                </Row>
+                <Row className="">
+                    <Form>
+                        <FormGroup check>
+                        <Label check for="ascendingcheck">
+                                Sort Low to High
+                            </Label>
+                            <Input
+                                type="checkbox"
+                                id="ascendingcheck"
+                                checked={isAscendingChecked}
+                                onChange={sortScoresAscending}
+                            />
+                        </FormGroup>
+                        <FormGroup check>
+                        <Label check for="ascendingcheck">
+                                Sort High to Low                            
+                        </Label>
+                            <Input
+                                type="checkbox"
+                                id="ascendingcheck"
+                                checked={isDescendingChecked}
+                                onChange={sortScoresDescending}
+                            />
+                        </FormGroup>
+                    </Form>
                 </Row>
             </Container>
         </div>
