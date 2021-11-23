@@ -40,7 +40,11 @@ h3 {
 
 .scores {
   border: 3px solid #282322;
-  border-width: '10px';
-  font-size: "3rem"; 
+  border-radius: 20px;
   background-color: #FFF4EC;
+}
+
+.button {
+  background-color: #282322; 
+  color: white
 }

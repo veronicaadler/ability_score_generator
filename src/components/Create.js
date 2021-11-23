@@ -142,9 +142,8 @@ const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => 
                         ? 
                         <Link to="/generate">
                         <Button 
-                            style={{backgroundColor: '#282322', color: 'white'}} 
                             size="lg" 
-                            className="mt-5 float-end"
+                            className="mt-5 float-end button"
                             >Next
                         </Button>
                         </Link>
