@@ -84,14 +84,14 @@ const Generate = ({charactername, characterclass, characterrace}) => {
                         <h1>{`${charactername} the ${characterclass} ${characterrace}'s Ability Scores`}</h1>
                     </Col>
                 </Row>
-                <Row className="mb-5">
+                <Row className="mb-5 mt-4">
                 {abilityScores.map((score) => (
-                    <Col className="text-center">
+                    <Col className="text-center pt-3 m-3 scores">
                         <p>{score}</p>
                     </Col>
                 ))}
                 </Row>
-                <Row className="">
+                <Row >
                     <Form>
                         <FormGroup check>
                         <Label check for="ascendingcheck">
