@@ -43,7 +43,7 @@ const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => 
 
 
     const handleBlurName = () => {
-        const regex = /^[A-Za-z]+$/
+        const regex = /[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/
         if (name && !regex.test(name)) {
             setNameError(true);
         } else {
@@ -87,13 +87,13 @@ const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => 
                                 onChange={(event) => inputName(event.target.value)}
                                 onBlur={handleBlurName}
                             />
-                            {nameError && <FormFeedback>A character name must include letters.</FormFeedback>}
+                            {nameError && <FormFeedback>Must enter a valid character name (no numbers or special characters, spaces only between letters).</FormFeedback>}
                         </FormGroup>
                         <FormGroup className="mb-3">
                                 <Label 
                                     for="raceselector"
                                 >
-                                Select Race: {race}   
+                                Select Race:  
                                 </Label>
                                     <Input
                                         
@@ -117,7 +117,7 @@ const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => 
                                 <Label 
                                     for="classselector"
                                 >
-                                Select Class: {classname}  
+                                Select Class: 
                                 </Label>
                                     <Input
                                         

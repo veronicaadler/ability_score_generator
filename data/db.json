@@ -1,112 +1,151 @@
 {
-    "abilities": [
-    
-        {
-            "id": 0,
-            "title": "STR",
-            "subtitle": "Strength"
-        },
-        {
-            "id": 1,
-            "title": "DEX",
-            "subtitle": "Dexterity"
-        },
-        {
-            "id": 2,
-            "title": "CON",
-            "subtitle": "Constitution"
-        },
-        {
-            "id": 3,
-            "title": "INT",
-            "subtitle": "Intelligence"
-        },
-        {
-            "id": 4,
-            "title": "WIS",
-            "subtitle": "Wisdom"
-        },
-        {
-            "id": 5,
-            "title": "CHA",
-            "subtitle": "Charisma"
-        }
-    ],
-    "classes": [
-        {
-            "id": 0,
-            "title": "Barbarian"
-        },
-        {
-            "id": 1,
-            "title": "Bard"
-        },
-        {
-            "id": 2,
-            "title": "Cleric"
-        },
-        {
-            "id": 3,
-            "title": "Druid"
-        },
-        {
-            "id": 4,
-            "title": "Fighter"
-        },
-        {
-            "id": 5,
-            "title": "Monk"
-        },
-        {
-            "id": 6,
-            "title": "Paladin"
-        },
-        {
-            "id": 7,
-            "title": "Ranger"
-        },
-        {
-            "id": 8,
-            "title": "Rogue"
-        },
-        {
-            "id": 9,
-            "title": "Sorcerer"
-        },
-        {
-            "id": 10,
-            "title": "Wizard"
-        }
-    ],
-    "races": [
-        {
-            "id": 0,
-            "title": "Human"
-        },
-        {
-            "id": 1,
-            "title": "Halfling"
-        },
-        {
-            "id": 2,
-            "title": "Gnome"
-        },
-        {
-            "id": 3,
-            "title": "Half-Orc"
-        },
-        {
-            "id": 4,
-            "title": "Dwarf"
-        },
-        {
-            "id": 5,
-            "title": "Half-elf"
-        },
-        {
-            "id": 6,
-            "title": "Elf"
-        }
-    ]
-
+  "classes": [
+    {
+      "id": 0,
+      "title": "Barbarian"
+    },
+    {
+      "id": 1,
+      "title": "Bard"
+    },
+    {
+      "id": 2,
+      "title": "Cleric"
+    },
+    {
+      "id": 3,
+      "title": "Druid"
+    },
+    {
+      "id": 4,
+      "title": "Fighter"
+    },
+    {
+      "id": 5,
+      "title": "Monk"
+    },
+    {
+      "id": 6,
+      "title": "Paladin"
+    },
+    {
+      "id": 7,
+      "title": "Ranger"
+    },
+    {
+      "id": 8,
+      "title": "Rogue"
+    },
+    {
+      "id": 9,
+      "title": "Sorcerer"
+    },
+    {
+      "id": 10,
+      "title": "Wizard"
+    }
+  ],
+  "races": [
+    {
+      "id": 0,
+      "title": "Human"
+    },
+    {
+      "id": 1,
+      "title": "Halfling"
+    },
+    {
+      "id": 2,
+      "title": "Gnome"
+    },
+    {
+      "id": 3,
+      "title": "Half-Orc"
+    },
+    {
+      "id": 4,
+      "title": "Dwarf"
+    },
+    {
+      "id": 5,
+      "title": "Half-elf"
+    },
+    {
+      "id": 6,
+      "title": "Elf"
+    }
+  ],
+  "scores": [
+    {
+      "charactername": "Veronica",
+      "characterclass": "Druid",
+      "characterrace": "Gnome",
+      "abilityScores": [
+        5,
+        8,
+        8,
+        10,
+        10,
+        11
+      ],
+      "id": 1
+    },
+    {
+      "charactername": "Veronica",
+      "characterclass": "Druid",
+      "characterrace": "Gnome",
+      "abilityScores": [
+        10,
+        12,
+        12,
+        14,
+        16,
+        17
+      ],
+      "id": 2
+    },
+    {
+      "charactername": "Veronica",
+      "characterclass": "Druid",
+      "characterrace": "Gnome",
+      "abilityScores": [
+        10,
+        12,
+        12,
+        14,
+        16,
+        17
+      ],
+      "id": 3
+    },
+    {
+      "charactername": "Veronica",
+      "characterclass": "Druid",
+      "characterrace": "Gnome",
+      "abilityScores": [
+        10,
+        12,
+        12,
+        14,
+        16,
+        17
+      ],
+      "id": 4
+    },
+    {
+      "charactername": "Michelle Shapira",
+      "characterclass": "Cleric",
+      "characterrace": "Half-Orc",
+      "abilityScores": [
+        7,
+        10,
+        12,
+        12,
+        12,
+        16
+      ],
+      "comments": "Hello love.",
+      "id": 5
+    }
+  ]
 }

@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { Collapse, Navbar, NavbarToggler, Nav, NavItem, NavLink } from "reactstrap";
+import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from "reactstrap";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHatWizard } from '@fortawesome/free-solid-svg-icons';
+import { faDragon } from '@fortawesome/free-solid-svg-icons';
+
 
 function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,13 +17,10 @@ function NavBar() {
             <Collapse isOpen={isOpen} navbar className="justify-content-end">
             <Nav navbar>
                 <NavItem>
-                    <NavLink href="">About</NavLink>
+                    <Link className="nav-link" to=""><FontAwesomeIcon className="icon" icon={faHatWizard} /> About</Link>
                 </NavItem>
                 <NavItem>
-                    <NavLink href="">Login</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink href="">Create Account</NavLink>
+                    <Link className="nav-link" to="/scores"><FontAwesomeIcon className="icon" icon={faDragon} /> Your Scores</Link>
                 </NavItem>
             </Nav>
             </Collapse>
