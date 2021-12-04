@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Create from "./components/Create";
 import Auto from "./components/Generate";
 import Scores from './components/Scores';
+import About from './components/About';
 import {
   BrowserRouter as Router,
   Switch,
@@ -41,6 +42,9 @@ const App = () => {
             </Route>
             <Route path="/scores">
               <Scores />
+            </Route>
+            <Route path="/about">
+              <About />
             </Route>
           </Switch>
         </div>

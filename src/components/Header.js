@@ -2,7 +2,7 @@ import { Jumbotron, Container, Row, Col } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import NavBar from "./Navbar"
 
-function Header() {
+const Header = () => {
     return (
         <Jumbotron fluid className="jumbotron">
                 <Container fluid>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {Container, Row, Col, Card, CardBody, CardTitle, CardSubtitle, CardText} from 'reactstrap';
+import {Container, Row, Col, Card, CardBody, CardTitle, CardSubtitle, CardText, Button} from 'reactstrap';
 
 const Scores = () => {
 
@@ -38,21 +38,27 @@ const Scores = () => {
     return (
         <Container>
             <Row>
+                <Col className="text-center mt-2 mb-3">
+                    <h1>Saved Characters</h1>
+                </Col>
+            </Row>
+            <Row>
                 <Col>
                 {scores.map((score) => (
-                    <Card>
+                    <Card className="text-center">
                         <CardBody>
                             <CardTitle>
-                                {score.charactername}
+                            {score.charactername}, the {score.characterclass} {score.characterrace}
                             </CardTitle>
-                            <CardSubtitle>
-                                A {score.characterclass} {score.characterrace}
+                            <CardSubtitle style={{fontStyle: 'italic'}}>
+                                Begins the journey with the following ability scores
                             </CardSubtitle>
                             <CardText>
                                 {score.abilityScores.map((ability) => (
-                                    <span className="m-2">{ability}</span>
+                                    <span className="m-2 scorelineup">{ability}</span>
                                 ))}
                                 <div>Comments: {score.comments}</div>
+                                <Button>Delete</Button>
                             </CardText>
                         </CardBody>
                     </Card>

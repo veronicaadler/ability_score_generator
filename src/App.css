@@ -38,6 +38,9 @@ h3 {
   color: black;
 }
 
+.scorelineup {
+  font-size: 2em;
+}
 .buttonlink:hover {
   color: gray;
 }

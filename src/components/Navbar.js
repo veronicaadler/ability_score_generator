@@ -17,7 +17,7 @@ function NavBar() {
             <Collapse isOpen={isOpen} navbar className="justify-content-end">
             <Nav navbar>
                 <NavItem>
-                    <Link className="nav-link" to=""><FontAwesomeIcon className="icon" icon={faHatWizard} /> About</Link>
+                    <Link className="nav-link" to="/about"><FontAwesomeIcon className="icon" icon={faHatWizard} /> About</Link>
                 </NavItem>
                 <NavItem>
                     <Link className="nav-link" to="/scores"><FontAwesomeIcon className="icon" icon={faDragon} /> Your Scores</Link>
