@@ -38,6 +38,10 @@ h3 {
   color: black;
 }
 
+.buttonlink:hover {
+  color: gray;
+}
+
 .scores {
   background-color: #FFF4EC;
 }

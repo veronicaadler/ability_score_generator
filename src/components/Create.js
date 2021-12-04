@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
 import { Link } from "react-router-dom";
 
 const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => {
@@ -140,13 +140,7 @@ const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => 
 
                     {(classname && race) && (!nameError)
                         ? 
-                        <Link to="/generate">
-                        <Button 
-                            size="lg" 
-                            className="mt-5 float-end button"
-                            >Next
-                        </Button>
-                        </Link>
+                        <Link to="/generate" class="mt-5 float-end button btn lg buttonlink">Next</Link>
                         : null
                     }
                 </Col>
