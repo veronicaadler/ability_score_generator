@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import {Container, Row, Col, Card, CardBody, CardTitle, CardSubtitle, CardText, Button} from 'reactstrap';
+import { Container, Row, Col, Card, CardBody, CardTitle } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 const Scores = () => {
 
@@ -45,23 +46,15 @@ const Scores = () => {
             <Row>
                 <Col>
                 {scores.map((score) => (
-                    <Card className="text-center">
-                        <CardBody>
-                            <CardTitle>
-                            {score.charactername}, the {score.characterclass} {score.characterrace}
-                            </CardTitle>
-                            <CardSubtitle style={{fontStyle: 'italic'}}>
-                                Begins the journey with the following ability scores
-                            </CardSubtitle>
-                            <CardText>
-                                {score.abilityScores.map((ability) => (
-                                    <span className="m-2 scorelineup">{ability}</span>
-                                ))}
-                                <div>Comments: {score.comments}</div>
-                                <Button>Delete</Button>
-                            </CardText>
-                        </CardBody>
-                    </Card>
+                        <Card className="mb-3">
+                            <CardBody>
+                                <Link to={`/scores/${score.id}`} className="nav-link cardtitle">
+                                    <CardTitle className="text-center">
+                                    {score.charactername}, the {score.characterclass} {score.characterrace}
+                                    </CardTitle>
+                                </Link>
+                            </CardBody>
+                        </Card>
                 ))}
                 </Col>
             </Row>
