@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const Generate = ({charactername, characterclass, characterrace}) => {
 
-    const [abilityScores, setAbilityScores] = useState([]);
-    const [isPending, setIsPending] = useState(false); //we will use this to later create loading animation
-    const [error, setError] = useState(null);
-    const [submitPending, setSubmitPending] = useState(false);
-    const [comments, setComments] = useState('');
+    const [abilityScores, setAbilityScores] = useState([]); //the ability scores, calculated upon component's mount
+    const [submitPending, setSubmitPending] = useState(false); //toggles the display of the submit button given whether the posting of the score to the json server has been successful
+    const [comments, setComments] = useState(''); //tracks any comments the user makes in regards to scores
+
+    const history = useHistory()
 
     useEffect(() => {
         function rollDice() {
@@ -44,6 +45,7 @@ const Generate = ({charactername, characterclass, characterrace}) => {
         }).then(() => {
             console.log('scores saved');
             setSubmitPending(false);
+            history.push('/scores');
         })
     }
 
@@ -61,6 +63,8 @@ const Generate = ({charactername, characterclass, characterrace}) => {
                 return <div>Strength is especially important for fighters.  Constitution and dexterity are also valued abilities.</div>
             case "Monk": 
                 return <div>Wisdom powers a monk's offense and defense.  Dexterity and Strength are also important abilities.</div>
+            case "Ranger":
+                return <div>Dexterity is prized among rangers. Strength is important for combat, and their spells are cast based on their Wisdom score.</div>
             default:
                 return <div>No info.</div>
 
@@ -86,15 +90,6 @@ const Generate = ({charactername, characterclass, characterrace}) => {
                 return <div>No info.</div>
     }}
 
-    if (error) {
-        return (
-          <div>{ error }</div>
-          )}
-    if (isPending) {
-         return (
-         <div>Loading...</div>
-         )}
-    else {
     return (
         <div>
             <Container fluid>
@@ -156,7 +151,7 @@ const Generate = ({charactername, characterclass, characterrace}) => {
                 </Form>
             </Container>
         </div>
-      )};
+      );
 }
  
 export default Generate;

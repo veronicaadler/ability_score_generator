@@ -38,11 +38,8 @@ h3 {
   color: black;
 }
 
-.scorelineup {
-  font-size: 2em;
-}
 .buttonlink:hover {
-  color: gray;
+  color: #B2AC88;
 }
 
 .scores {
@@ -66,5 +63,16 @@ span {
 
 .icon {
   color: black;
+}
+
+.cardtitle {
+  font-size: 2rem;
+  font-family: 'Caveat', 'sans-serif';
+  text-decoration: none;
+  color: black;
+}
+
+.cardtitle:hover {
+  color: #B2AC88;
 }
 

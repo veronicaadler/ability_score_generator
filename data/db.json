@@ -81,20 +81,6 @@
       "characterclass": "Druid",
       "characterrace": "Gnome",
       "abilityScores": [
-        5,
-        8,
-        8,
-        10,
-        10,
-        11
-      ],
-      "id": 1
-    },
-    {
-      "charactername": "Veronica",
-      "characterclass": "Druid",
-      "characterrace": "Gnome",
-      "abilityScores": [
         10,
         12,
         12,
@@ -103,34 +89,6 @@
         17
       ],
       "id": 2
-    },
-    {
-      "charactername": "Veronica",
-      "characterclass": "Druid",
-      "characterrace": "Gnome",
-      "abilityScores": [
-        10,
-        12,
-        12,
-        14,
-        16,
-        17
-      ],
-      "id": 3
-    },
-    {
-      "charactername": "Veronica",
-      "characterclass": "Druid",
-      "characterrace": "Gnome",
-      "abilityScores": [
-        10,
-        12,
-        12,
-        14,
-        16,
-        17
-      ],
-      "id": 4
     },
     {
       "charactername": "Michelle Shapira",
@@ -146,6 +104,36 @@
       ],
       "comments": "Hello love.",
       "id": 5
+    },
+    {
+      "charactername": "Boo Reynolds",
+      "characterclass": "Fighter",
+      "characterrace": "Dwarf",
+      "abilityScores": [
+        8,
+        9,
+        12,
+        12,
+        13,
+        14
+      ],
+      "comments": "Alright!",
+      "id": 6
+    },
+    {
+      "charactername": "Linel Richard",
+      "characterclass": "Ranger",
+      "characterrace": "Half-elf",
+      "abilityScores": [
+        12,
+        13,
+        13,
+        14,
+        15,
+        16
+      ],
+      "comments": "Love!",
+      "id": 7
     }
   ]
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Container, Row, Col, Button, Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
 import { Link } from "react-router-dom";
 
 const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => {
@@ -8,7 +8,7 @@ const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => 
     const [possibleRaces, setPossibleRaces] = useState([]);
     const [isPending, setIsPending] = useState(true); //used to create loading messages/animation
     const [error, setError] = useState(null); //used for errors in fetch
-    const [nameError, setNameError] = useState(false);
+    const [nameError, setNameError] = useState(false); //watches for any invalid name inputs
 
     useEffect(() => {
         const abortControl = new AbortController();
@@ -43,7 +43,7 @@ const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => 
 
 
     const handleBlurName = () => {
-        const regex = /[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/
+        const regex = /[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/ //regex checks that are all the name consists of non-numbers and the only white space comes between a first and last name
         if (name && !regex.test(name)) {
             setNameError(true);
         } else {

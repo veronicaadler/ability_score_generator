@@ -6,6 +6,7 @@ import Create from "./components/Create";
 import Auto from "./components/Generate";
 import Scores from './components/Scores';
 import About from './components/About';
+import ScoreDetails from './components/ScoreDetails';
 import {
   BrowserRouter as Router,
   Switch,
@@ -40,8 +41,11 @@ const App = () => {
             <Route path="/generate">
               <Auto charactername={name} characterclass={classTitle} characterrace={race} />
             </Route>
-            <Route path="/scores">
+            <Route exact path="/scores">
               <Scores />
+            </Route>
+            <Route exact path='/scores/:id'>
+              <ScoreDetails />
             </Route>
             <Route path="/about">
               <About />
