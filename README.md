@@ -13,6 +13,14 @@ This generator is a tool that takes care of the essential ability score calculat
 ```
 $ npm install
 ```
+* Once installation is complete, enter the following command in the terminal to begin the .json server:
+```
+$ npx json-server --watch data/db.json --port 8000
+```
+* Open a second terminal in the ability_score_generator folder and start the server with:
+```
+$ npm start
+```
 
 ## Acknowledgements
 
