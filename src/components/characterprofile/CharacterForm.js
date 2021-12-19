@@ -94,7 +94,7 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
 
                     {(classname && race) && (!nameError)
                         ? 
-                        <Link to="/generatescore" class="mt-5 float-end button btn lg">Next
+                        <Link to="/generatescore" className="mt-5 float-end button btn lg">Next
                         </Link>
                         :null
                     }

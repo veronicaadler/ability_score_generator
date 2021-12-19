@@ -22,7 +22,7 @@ const About = () => {
                             to best enhance a character's effectiveness in their chosen class.  For example, a barbarian would
                             highly value strength, while a bard relies on charisma for the power of their song.
                         </p>
-                        <Link to="/create" class="button lg btn button buttonlink">Create New Scores
+                        <Link to="/create" className="button lg btn button buttonlink">Create New Scores
                         </Link>
                     </Col>
                 </Row>
