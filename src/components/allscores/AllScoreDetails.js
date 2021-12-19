@@ -2,7 +2,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {Container, Row, Col, Card, CardBody, CardTitle, CardText, Button, CardSubtitle} from 'reactstrap';
 
-const ScoreDetails = () => {
+const AllScoreDetails = () => {
 
     const [score, setScore] = useState([]); //stores the individual score data from the json server
     const [isPending, setIsPending] = useState(true); //we will use this to later create loading animation
@@ -86,4 +86,4 @@ const ScoreDetails = () => {
     );};
 }
  
-export default ScoreDetails;
+export default AllScoreDetails;

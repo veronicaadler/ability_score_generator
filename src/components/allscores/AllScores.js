@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, CardBody, CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-const Scores = () => {
+const AllScores = () => {
 
     const [scores, setScores] = useState([]);
     const [isPending, setIsPending] = useState(true); //we will use this to later create loading animation
@@ -63,4 +63,4 @@ const Scores = () => {
     }
 }
  
-export default Scores;
+export default AllScores;

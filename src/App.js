@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import './App.css';
-import Home from "./components/Home";
-import Header from "./components/Header";
-import Create from "./components/Create";
-import Auto from "./components/Generate";
-import Scores from './components/Scores';
-import About from './components/About';
-import ScoreDetails from './components/ScoreDetails';
+import Home from "./components/home/Home";
+import Header from "./components/shared/Header";
+import CreateCharacterProfile from './components/characterprofile/CreateCharacterProfile';
+import GenerateScores from "./components/generatescore/GenerateScores";
+import AllScores from './components/allscores/AllScores'
+import About from './components/about/About';
+import AllScoreDetails from './components/allscores/AllScoreDetails';
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,7 +30,7 @@ const App = () => {
               <Home />
             </Route>
             <Route path="/create">
-              <Create 
+              <CreateCharacterProfile 
                 inputName={name => setName(name)} 
                 inputClass={classTitle => setClassTitle(classTitle)} 
                 inputRace={race => setRace(race)}
@@ -38,14 +38,14 @@ const App = () => {
                 classname={classTitle}
                 race={race}/>
             </Route>
-            <Route path="/generate">
-              <Auto charactername={name} characterclass={classTitle} characterrace={race} />
+            <Route path="/generatescore">
+              <GenerateScores charactername={name} characterclass={classTitle} characterrace={race} />
             </Route>
-            <Route exact path="/scores">
-              <Scores />
+            <Route exact path="/allscores">
+              <AllScores />
             </Route>
-            <Route exact path='/scores/:id'>
-              <ScoreDetails />
+            <Route exact path='/allscores/:id'>
+              <AllScoreDetails />
             </Route>
             <Route path="/about">
               <About />

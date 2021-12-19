@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const Generate = ({charactername, characterclass, characterrace}) => {
+const GenerateScores = ({charactername, characterclass, characterrace}) => {
 
     const [abilityScores, setAbilityScores] = useState([]); //the ability scores, calculated upon component's mount
     const [submitPending, setSubmitPending] = useState(false); //toggles the display of the submit button given whether the posting of the score to the json server has been successful
     const [comments, setComments] = useState(''); //tracks any comments the user makes in regards to scores
 
+    const rollDice = useRef(() => {})
+
     const history = useHistory()
 
-    useEffect(() => {
-        function rollDice() {
+    rollDice.current = () => {
         const totalAbilityScores = []; //will contain the values of every ability score
         for (let i = 0; i < 6; i++) { //loops through for the value of number of ability scores
             const singleAbilityScore = []; //holds the values of the elements that will be used to calculate an individual ability score
@@ -29,7 +30,9 @@ const Generate = ({charactername, characterclass, characterrace}) => {
         totalAbilityScores.sort((a,b) => a-b);
         setAbilityScores(totalAbilityScores);
     }
-        rollDice()
+
+    useEffect(() => {
+        rollDice.current()
     }, [])
 
     const handleSubmit = (event) => {
@@ -90,6 +93,11 @@ const Generate = ({charactername, characterclass, characterrace}) => {
                 return <div>No info.</div>
     }}
 
+    if (!charactername) {
+        return (
+            <div>Sorry, it looks like you </div>
+        )
+    }
     return (
         <div>
             <Container fluid>
@@ -154,4 +162,4 @@ const Generate = ({charactername, characterclass, characterrace}) => {
       );
 }
  
-export default Generate;
+export default GenerateScores;

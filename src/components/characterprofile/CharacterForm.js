@@ -1,46 +1,10 @@
-import { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
 import { Link } from "react-router-dom";
+import { useState } from 'react';
 
-const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => {
+const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race, allClasses, allRaces }) => {
 
-    const [possibleClasses, setPossibleClasses] = useState([]);
-    const [possibleRaces, setPossibleRaces] = useState([]);
-    const [isPending, setIsPending] = useState(true); //used to create loading messages/animation
-    const [error, setError] = useState(null); //used for errors in fetch
     const [nameError, setNameError] = useState(false); //watches for any invalid name inputs
-
-    useEffect(() => {
-        const abortControl = new AbortController();
-
-        Promise.all([
-            fetch('http://localhost:8000/classes'),
-            fetch('http://localhost:8000/races')
-        ], { signal: abortControl.signal } )
-                .then(([res1, res2]) => {
-                if (!res1.ok || !res2.ok) {
-                    throw Error('could not fetch the data needed for this page.')
-                } else {
-                    return [res1, res2]
-                }}) 
-                .then(([res1, res2]) => Promise.all([res1.json(), res2.json()]))//gets the response object and passes the json into a Javascript object.  Returns a promise as this takes some time.
-                .then(([data1, data2]) => { //here we are using the data retrieved from the fetch
-                    setPossibleClasses(data1);
-                    setPossibleRaces(data2);
-                    setIsPending(false);
-                    setError(null);
-                })
-                .catch(err => {
-                    if (err.name === "AbortError") {
-                        console.log('fetch aborted')
-                    } else { //catches any network errors, like not being able to connect to server
-                    setError(err.message);
-                    setIsPending(false);
-                }})
-
-            return () => abortControl.abort();
-    }, []);
-
 
     const handleBlurName = () => {
         const regex = /[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/ //regex checks that are all the name consists of non-numbers and the only white space comes between a first and last name
@@ -51,18 +15,8 @@ const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => 
         }
     }
 
-
-    if (error) {
-        return (
-          <div>{ error }</div>
-          )}
-    if (isPending) {
-         return (
-         <div>Loading...</div>
-         )}
-    else {
-        return (
-                <Container fluid>
+    return (
+        <Container fluid>
             <Row>
                 <Col
                     className="p-0 col-12 col-md-7 col-lg-6"
@@ -105,7 +59,7 @@ const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => 
 
                                     >
                                     <option value="" disabled hidden>Choose</option>
-                                    {possibleRaces.map((race) => (
+                                    {allRaces.map((race) => (
                                         <option key={race.id}>
                                             {race.title}
                                         </option>
@@ -129,7 +83,7 @@ const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => 
   
                                     >
                                     <option value="" disabled hidden>Choose</option>
-                                    {possibleClasses.map((choice) => (
+                                    {allClasses.map((choice) => (
                                         <option key={choice.id}>
                                             {choice.title}
                                         </option>
@@ -140,14 +94,14 @@ const Create = ({ inputName, inputClass, inputRace, name, classname, race }) => 
 
                     {(classname && race) && (!nameError)
                         ? 
-                        <Link to="/generate" class="mt-5 float-end button btn lg">Next
+                        <Link to="/generatescore" class="mt-5 float-end button btn lg">Next
                         </Link>
-                        : null
+                        :null
                     }
                 </Col>
             </Row>
         </Container>
-      )};
+      );
 }
  
-export default Create;
+export default CharacterForm;
