@@ -31,7 +31,7 @@ const AllScoreDetails = () => {
     }, [id])
 
     const handleClick = () => {
-        fetch('http://localhost:8000/scores/' + score.id, {
+        fetch('http://localhost:8000/allscores/' + score.id, {
             method: 'DELETE'
           }).then(() => {
             history.push('/scores');
@@ -51,14 +51,13 @@ const AllScoreDetails = () => {
       <Container>
         <Row>
           <Col>
-            <Card className="mb-3">
+            <Card className="mb-3 mt-5">
               <CardBody>
-                <CardTitle style={{ fontStyle: "italic" }}>Scores:</CardTitle>
+                <CardTitle>Scores:</CardTitle>
                 <CardSubtitle className="text-center">
                   {score.abilityScores.map((ability) => (
                     <span
-                      className="m-2 col-12"
-                      style={{ fontSize: "3rem" }}
+                      className="m-2 col-12 spanscore"
                     >
                       {ability}
                     </span>

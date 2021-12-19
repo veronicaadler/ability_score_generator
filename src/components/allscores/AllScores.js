@@ -48,7 +48,7 @@ const AllScores = () => {
                 {scores.map((score) => (
                         <Card className="mb-3">
                             <CardBody>
-                                <Link to={`/scores/${score.id}`} className="nav-link cardtitle">
+                                <Link to={`/allscores/${score.id}`} className="nav-link cardtitle">
                                     <CardTitle className="text-center">
                                     {score.charactername}, the {score.characterclass} {score.characterrace}
                                     </CardTitle>

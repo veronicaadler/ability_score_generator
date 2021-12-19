@@ -7,7 +7,7 @@ const LoadingComponent = () => {
         <Container fluid>
             <Row>
                 <Col className="text-center mt-5">
-                    <FontAwesomeIcon className="icon fa-spin fa-5x" icon={faCog}></FontAwesomeIcon>
+                    <FontAwesomeIcon spin size="5x" icon={faCog}></FontAwesomeIcon>
                 </Col>
             </Row>
         </Container>
