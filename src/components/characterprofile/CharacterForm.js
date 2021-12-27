@@ -1,8 +1,14 @@
-import { Container, Row, Col, Form, FormGroup, Label, Input, FormFeedback } from 'reactstrap';
+import { Container, Row, Col, Form, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
+import { Field, reduxForm } from 'redux-form'
 
-const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race, allClasses, allRaces }) => {
+const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race, allClasses, allRaces, handleSubmit }) => {
+
+    const submit = values => {
+        console.log('hello')
+        console.log(values)
+    }
 
     const [nameError, setNameError] = useState(false); //watches for any invalid name inputs
 
@@ -29,11 +35,12 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
                 </Col>
                 <Col
                     className="mt-5">
-                    <Form>
+                    <Form onSubmit={handleSubmit(submit)}>
                         <FormGroup className="mb-4">
                             <Label for="name">Character Name: </Label>
-                            <Input
+                            <Field className="input-group"
                                 invalid={nameError}
+                                component="input"
                                 type="text"
                                 name="name"
                                 id="name"
@@ -49,8 +56,9 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
                                 >
                                 Select Race:  
                                 </Label>
-                                    <Input
-                                        
+                                    <Field
+                                        className="input-group"
+                                        component="select"
                                         id="raceselector"
                                         name="raceselector"
                                         type="select"
@@ -64,7 +72,7 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
                                             {race.title}
                                         </option>
                                     ))}
-                                    </Input>
+                                    </Field>
                             </FormGroup>
                             <FormGroup 
                                 className="mb-2">
@@ -73,8 +81,9 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
                                 >
                                 Select Class: 
                                 </Label>
-                                    <Input
-                                        
+                                    <Field
+                                        className="input-group"
+                                        component="select"
                                         id="classselector"
                                         name="classselector"
                                         type="select"
@@ -88,8 +97,9 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
                                             {choice.title}
                                         </option>
                                     ))}
-                                    </Input>
+                                    </Field>
                             </FormGroup>
+                            <Button type="submit" className="btn btn-large">Next</Button>
                     </Form>
 
                     {(classname && race) && (!nameError)
@@ -104,4 +114,6 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
       );
 }
  
-export default CharacterForm;
+export default reduxForm({
+    form: 'character'
+})(CharacterForm);

@@ -7,6 +7,8 @@ import GenerateScores from "./components/generatescore/GenerateScores";
 import AllScores from './components/allscores/AllScores'
 import About from './components/about/About';
 import AllScoreDetails from './components/allscores/AllScoreDetails';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,6 +23,7 @@ const App = () => {
 
 
   return (
+    <Provider store={store}>
     <Router>
       <div className="App">
         <Header />
@@ -54,6 +57,7 @@ const App = () => {
         </div>
       </div>
     </Router>
+    </Provider>
   );
 }
 
