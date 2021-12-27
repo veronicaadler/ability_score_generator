@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { useHistory } from 'react-router-dom'
 
-const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race, allClasses, allRaces, handleSubmit }) => {
+const CharacterForm = ({ allClasses, allRaces, handleSubmit }) => {
 
     const history = useHistory()
 
@@ -14,14 +14,14 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
 
     const [nameError, setNameError] = useState(false); //watches for any invalid name inputs
 
-    const handleBlurName = () => {
+    /*const handleBlurName = () => {
         const regex = /[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/ //regex checks that are all the name consists of non-numbers and the only white space comes between a first and last name
         if (name && !regex.test(name)) {
             setNameError(true);
         } else {
             setNameError(false);
         }
-    }
+    }*/
 
     return (
         <Container fluid>
@@ -46,9 +46,7 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
                                 type="text"
                                 name="name"
                                 id="name"
-                                value={name}
-                                onChange={(event) => inputName(event.target.value)}
-                                onBlur={handleBlurName}
+                                //onBlur={handleBlurName}
                             />
                             {nameError && <FormFeedback>Must enter a valid character name (no numbers or special characters, spaces only between letters).</FormFeedback>}
                         </FormGroup>
@@ -64,8 +62,6 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
                                         id="raceselector"
                                         name="race"
                                         type="select"
-                                        value={race}
-                                        onChange={(event) => inputRace(event.target.value)}
 
                                     >
                                     <option value="" disabled hidden>Choose</option>
@@ -89,8 +85,6 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
                                         id="classselector"
                                         name="classname"
                                         type="select"
-                                        value={classname}
-                                        onChange={(event) => inputClass(event.target.value)}
   
                                     >
                                     <option value="" disabled hidden>Choose</option>

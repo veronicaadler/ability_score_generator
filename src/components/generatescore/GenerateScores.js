@@ -1,7 +1,11 @@
 import { useEffect, useState, useRef } from 'react';
 import GenerateScoresDisplay from './GenerateScoresDisplay';
+import { useDispatch } from 'react-redux';
+import { createScore } from '../../redux/scores/scoreActions';
 
 const GenerateScores = () => {
+
+    const dispatch = useDispatch()
 
     const [abilityScores, setAbilityScores] = useState([]); //the ability scores, calculated upon component's mount
 
@@ -25,6 +29,7 @@ const GenerateScores = () => {
 
         totalAbilityScores.sort((a,b) => a-b); //sorts the ability scores in ascending order
         createAbilityObjects(totalAbilityScores);
+        console.log(totalAbilityScores)
     }
 
 
@@ -41,6 +46,8 @@ const GenerateScores = () => {
             )
         }
         console.log(abilityScoresWithKeys)
+        dispatch(createScore(abilityScoresWithKeys))
+        console.log('dispatched')
         setAbilityScores(abilityScoresWithKeys);
     }
 
@@ -50,7 +57,6 @@ const GenerateScores = () => {
 
     return (
         <GenerateScoresDisplay 
-            scores={abilityScores}
         />
       );
 }

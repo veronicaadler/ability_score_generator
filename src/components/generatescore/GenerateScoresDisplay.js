@@ -5,7 +5,7 @@ import renderClassMsg from './RenderClassMsg';
 import renderRaceMsg from './RenderRaceMsg';
 import { useSelector } from 'react-redux';
 
-const GenerateScoresDisplay = ({ scores }) => {
+const GenerateScoresDisplay = () => {
 
     const [submitPending, setSubmitPending] = useState(false); //toggles the display of the submit button given whether the posting of the score to the json server has been successful
     const [comments, setComments] = useState(''); //tracks any comments the user makes in regards to scores
@@ -13,17 +13,18 @@ const GenerateScoresDisplay = ({ scores }) => {
     const history = useHistory()
 
     const {name, race, classname} = useSelector(state => state.form.character.values)
-
+    const reduxscores = useSelector(state => state.abilityscores.score)
+    reduxscores.map(score => console.log(score))
     const handleSubmit = (event) => {
         event.preventDefault();
-        const score = {name, race, classname, scores, comments} 
+        const serverscore = {name, race, classname, reduxscores, comments} 
         //creates the object that will be submitted to the json server
         setSubmitPending(true);
         fetch('http://localhost:8000/scores', {
             method: 'POST',
             headers: {'Content-type': 'application/json'}, 
             //tells the server the type of content we are sending
-            body: JSON.stringify(score)
+            body: JSON.stringify(serverscore)
         }).then(() => {
             console.log('scores saved');
             setSubmitPending(false);
@@ -40,7 +41,7 @@ const GenerateScoresDisplay = ({ scores }) => {
             </Col>
         </Row>
         <Row className="mb-4 mt-4 m-1 border border-dark border-5 rounded scores">
-        {scores.map((score) => (
+        {reduxscores.map((score) => (
             <Col key={score.id} className="text-center m-1 pt-2" style={{fontSize: '3rem'}}>
                 <p>{score.score}</p>
             </Col>
