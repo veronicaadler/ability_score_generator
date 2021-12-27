@@ -3,17 +3,20 @@ import { useHistory } from 'react-router-dom';
 import { useState } from 'react'
 import renderClassMsg from './RenderClassMsg';
 import renderRaceMsg from './RenderRaceMsg';
+import { useSelector } from 'react-redux';
 
-const GenerateScoresDisplay = ({ scores, charactername, characterclass, characterrace }) => {
+const GenerateScoresDisplay = ({ scores }) => {
 
     const [submitPending, setSubmitPending] = useState(false); //toggles the display of the submit button given whether the posting of the score to the json server has been successful
     const [comments, setComments] = useState(''); //tracks any comments the user makes in regards to scores
 
     const history = useHistory()
 
+    const {name, race, classname} = useSelector(state => state.form.character.values)
+
     const handleSubmit = (event) => {
         event.preventDefault();
-        const score = {charactername, characterclass, characterrace, scores, comments} 
+        const score = {name, race, classname, scores, comments} 
         //creates the object that will be submitted to the json server
         setSubmitPending(true);
         fetch('http://localhost:8000/scores', {
@@ -33,7 +36,7 @@ const GenerateScoresDisplay = ({ scores, charactername, characterclass, characte
         <Container fluid>
         <Row>
             <Col className="text-center mb-5 mt-4">
-                <h1>{`${charactername}'s Ability Scores`}</h1>
+                <h1>{`${name}'s Ability Scores`}</h1>
             </Col>
         </Row>
         <Row className="mb-4 mt-4 m-1 border border-dark border-5 rounded scores">
@@ -45,8 +48,8 @@ const GenerateScoresDisplay = ({ scores, charactername, characterclass, characte
         </Row>
         <Row className="mb-4 border border-dark border-5 rounded m-1 scores">
             <Col>
-                <p className="fontgroup">As a {characterclass}...<span className="text-center">{renderClassMsg(characterclass)}</span></p>
-                <p className="fontgroup">As a {characterrace}...<span className="text-center">{renderRaceMsg(characterrace)}</span></p>
+                <h3 className="fontgroup">As a {classname}...<span className="text-center">{renderClassMsg(classname)}</span></h3>
+                <h3 className="fontgroup">As a {race}...<span className="text-center">{renderRaceMsg(race)}</span></h3>
             </Col>
         </Row>
         <Form onSubmit={handleSubmit}>

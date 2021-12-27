@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './App.css';
 import Home from "./components/home/Home";
 import Header from "./components/shared/Header";
@@ -17,10 +16,6 @@ import {
 
 
 const App = () => {
-  const [name, setName] = useState('');
-  const [classTitle, setClassTitle] = useState('');
-  const [race, setRace] = useState('')
-
 
   return (
     <Provider store={store}>
@@ -33,16 +28,10 @@ const App = () => {
               <Home />
             </Route>
             <Route path="/create">
-              <CreateCharacterProfile 
-                inputName={name => setName(name)} 
-                inputClass={classTitle => setClassTitle(classTitle)} 
-                inputRace={race => setRace(race)}
-                name={name}
-                classname={classTitle}
-                race={race}/>
+              <CreateCharacterProfile />
             </Route>
             <Route path="/generatescore">
-              <GenerateScores charactername={name} characterclass={classTitle} characterrace={race} />
+              <GenerateScores />
             </Route>
             <Route exact path="/allscores">
               <AllScores />

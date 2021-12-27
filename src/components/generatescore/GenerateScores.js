@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import GenerateScoresDisplay from './GenerateScoresDisplay';
 
-const GenerateScores = ({charactername, characterclass, characterrace}) => {
+const GenerateScores = () => {
 
     const [abilityScores, setAbilityScores] = useState([]); //the ability scores, calculated upon component's mount
 
@@ -48,22 +48,11 @@ const GenerateScores = ({charactername, characterclass, characterrace}) => {
         rollDice.current()
     }, [])
 
-    if (!charactername) {
-        return (
-            <div>
-                <p>Sorry, it looks like you failed to enter a character name.</p> 
-            </div>
-        )
-    } else {
     return (
         <GenerateScoresDisplay 
             scores={abilityScores}
-            charactername={charactername} 
-            characterclass={characterclass} 
-            characterrace={characterrace}
         />
-      )
-    };
+      );
 }
  
 export default GenerateScores;

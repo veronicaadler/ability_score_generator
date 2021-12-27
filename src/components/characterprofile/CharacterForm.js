@@ -2,12 +2,14 @@ import { Container, Row, Col, Form, FormGroup, Label, Input, FormFeedback, Butto
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { Field, reduxForm } from 'redux-form'
+import { useHistory } from 'react-router-dom'
 
 const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race, allClasses, allRaces, handleSubmit }) => {
 
-    const submit = values => {
-        console.log('hello')
-        console.log(values)
+    const history = useHistory()
+
+    const submit = () => {
+        history.push("/generatescore")
     }
 
     const [nameError, setNameError] = useState(false); //watches for any invalid name inputs
@@ -39,7 +41,7 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
                         <FormGroup className="mb-4">
                             <Label for="name">Character Name: </Label>
                             <Field className="input-group"
-                                invalid={nameError}
+                                //invalid={nameError}
                                 component="input"
                                 type="text"
                                 name="name"
@@ -60,7 +62,7 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
                                         className="input-group"
                                         component="select"
                                         id="raceselector"
-                                        name="raceselector"
+                                        name="race"
                                         type="select"
                                         value={race}
                                         onChange={(event) => inputRace(event.target.value)}
@@ -85,7 +87,7 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
                                         className="input-group"
                                         component="select"
                                         id="classselector"
-                                        name="classselector"
+                                        name="classname"
                                         type="select"
                                         value={classname}
                                         onChange={(event) => inputClass(event.target.value)}
@@ -99,15 +101,15 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
                                     ))}
                                     </Field>
                             </FormGroup>
-                            <Button type="submit" className="btn btn-large">Next</Button>
+                            <Button type="submit" className="mt-5 float-end button btn lg">Next</Button>
                     </Form>
 
-                    {(classname && race) && (!nameError)
+                    {/*(classname && race) && (!nameError)
                         ? 
                         <Link to="/generatescore" className="mt-5 float-end button btn lg">Next
                         </Link>
                         :null
-                    }
+                    */}
                 </Col>
             </Row>
         </Container>
@@ -115,5 +117,6 @@ const CharacterForm = ({ inputName, inputClass, inputRace, name, classname, race
 }
  
 export default reduxForm({
-    form: 'character'
+    form: 'character',
+    destroyOnUnmount: false
 })(CharacterForm);
