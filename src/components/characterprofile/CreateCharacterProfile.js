@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import CharacterForm from './CharacterForm';
 import LoadingComponent from '../shared/LoadingComponent';
 
-const CreateCharacterProfile = ({ inputName, inputClass, inputRace, name, classname, race }) => {
+const CreateCharacterProfile = () => {
 
     const [possibleClasses, setPossibleClasses] = useState([]);
     const [possibleRaces, setPossibleRaces] = useState([]);
@@ -52,12 +52,6 @@ const CreateCharacterProfile = ({ inputName, inputClass, inputRace, name, classn
     else {
         return (
             <CharacterForm 
-            inputName={name => inputName(name)} 
-            inputClass={classTitle => inputClass(classTitle)} 
-            inputRace={race => inputRace(race)}
-            name={name}
-            classname={classname}
-            race={race}
             allClasses={possibleClasses}
             allRaces={possibleRaces}/>
       )};

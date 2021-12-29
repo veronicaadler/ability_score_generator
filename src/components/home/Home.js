@@ -17,9 +17,9 @@ function Home() {
                     <Col className="text-center">
                         <h3 className="mb-4 mt-5" style={{fontSize: '3rem'}}>Build your characters with ease.</h3>
                         <p className="mb-5">
-                        An easy to use tool to automatically generate your Dungeons and Dragons v3.5 ability scores.  
-                        Suggests how to assign your ability scores based on class and informs you of racial modifiers. 
-                        Stores your scores and comments so you can focus on playing.</p>
+                        An easy to use tool that automatically generates your Dungeons and Dragons v3.5 ability scores.  
+                        Suggests how to assign your ability scores based on class and race modifiers. 
+                        Stores your scores and notes so you can focus on playing.</p>
                         <Link to="/create" className="button lg btn button buttonlink">Get Started
                         </Link>
                     </Col>

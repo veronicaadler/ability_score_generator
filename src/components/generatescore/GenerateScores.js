@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import GenerateScoresDisplay from './GenerateScoresDisplay';
 import { useDispatch } from 'react-redux';
 import { createScore } from '../../redux/scores/scoreActions';
@@ -6,8 +6,6 @@ import { createScore } from '../../redux/scores/scoreActions';
 const GenerateScores = () => {
 
     const dispatch = useDispatch()
-
-    const [abilityScores, setAbilityScores] = useState([]); //the ability scores, calculated upon component's mount
 
     const rollDice = useRef(() => {})
 
@@ -48,7 +46,6 @@ const GenerateScores = () => {
         console.log(abilityScoresWithKeys)
         dispatch(createScore(abilityScoresWithKeys))
         console.log('dispatched')
-        setAbilityScores(abilityScoresWithKeys);
     }
 
     useEffect(() => {

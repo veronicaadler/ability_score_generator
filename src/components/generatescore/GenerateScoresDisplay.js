@@ -14,7 +14,6 @@ const GenerateScoresDisplay = () => {
 
     const {name, race, classname} = useSelector(state => state.form.character.values)
     const reduxscores = useSelector(state => state.abilityscores.score)
-    reduxscores.map(score => console.log(score))
     const handleSubmit = (event) => {
         event.preventDefault();
         const serverscore = {name, race, classname, reduxscores, comments} 
@@ -28,12 +27,11 @@ const GenerateScoresDisplay = () => {
         }).then(() => {
             console.log('scores saved');
             setSubmitPending(false);
-            history.push('/scores');
+            history.push('/allscores');
         })
     }
 
     return (
-
         <Container fluid>
         <Row>
             <Col className="text-center mb-5 mt-4">

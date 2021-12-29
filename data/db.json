@@ -77,63 +77,70 @@
   ],
   "scores": [
     {
-      "charactername": "Veronica",
-      "characterclass": "Druid",
-      "characterrace": "Gnome",
-      "abilityScores": [
-        10,
-        12,
-        12,
-        14,
-        16,
-        17
+      "name": "Ver",
+      "race": "Halfling",
+      "classname": "Bard",
+      "reduxscores": [
+        {
+          "id": 0,
+          "score": 8
+        },
+        {
+          "id": 1,
+          "score": 11
+        },
+        {
+          "id": 2,
+          "score": 12
+        },
+        {
+          "id": 3,
+          "score": 12
+        },
+        {
+          "id": 4,
+          "score": 13
+        },
+        {
+          "id": 5,
+          "score": 15
+        }
       ],
-      "id": 2
+      "comments": "Happy.",
+      "id": 8
     },
     {
-      "charactername": "Michelle Shapira",
-      "characterclass": "Cleric",
-      "characterrace": "Half-Orc",
-      "abilityScores": [
-        7,
-        10,
-        12,
-        12,
-        12,
-        16
+      "name": "Veronica",
+      "race": "Halfling",
+      "classname": "Cleric",
+      "reduxscores": [
+        {
+          "id": 0,
+          "score": 10
+        },
+        {
+          "id": 1,
+          "score": 12
+        },
+        {
+          "id": 2,
+          "score": 12
+        },
+        {
+          "id": 3,
+          "score": 13
+        },
+        {
+          "id": 4,
+          "score": 14
+        },
+        {
+          "id": 5,
+          "score": 14
+        }
       ],
-      "comments": "Hello love.",
-      "id": 5
-    },
-    {
-      "charactername": "Boo Reynolds",
-      "characterclass": "Fighter",
-      "characterrace": "Dwarf",
-      "abilityScores": [
-        8,
-        9,
-        12,
-        12,
-        13,
-        14
-      ],
-      "comments": "Alright!",
-      "id": 6
-    },
-    {
-      "charactername": "Linel Richard",
-      "characterclass": "Ranger",
-      "characterrace": "Half-elf",
-      "abilityScores": [
-        12,
-        13,
-        13,
-        14,
-        15,
-        16
-      ],
-      "comments": "Love!",
-      "id": 7
+      "comments": "Not great.",
+      "id": 9
     }
   ]
 }

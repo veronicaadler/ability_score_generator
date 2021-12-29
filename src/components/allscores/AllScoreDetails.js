@@ -34,7 +34,7 @@ const AllScoreDetails = () => {
         fetch('http://localhost:8000/allscores/' + score.id, {
             method: 'DELETE'
           }).then(() => {
-            history.push('/scores');
+            history.push('/allscores');
           }) 
         }
 
@@ -55,11 +55,11 @@ const AllScoreDetails = () => {
               <CardBody>
                 <CardTitle>Scores:</CardTitle>
                 <CardSubtitle className="text-center">
-                  {score.abilityScores.map((ability) => (
-                    <span
+                  {score.reduxscores.map((ability) => (
+                    <span key={ability.id}
                       className="m-2 col-12 spanscore"
                     >
-                      {ability}
+                      {ability.score}
                     </span>
                   ))}
                   {score.comments && (
