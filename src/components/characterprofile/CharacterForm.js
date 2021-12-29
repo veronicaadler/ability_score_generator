@@ -1,27 +1,18 @@
-import { Container, Row, Col, Form, FormGroup, Label, Input, FormFeedback, Button } from 'reactstrap';
-import { Link } from "react-router-dom";
-import { useState } from 'react';
-import { Field, reduxForm } from 'redux-form'
-import { useHistory } from 'react-router-dom'
+import { Container, Row, Col, Form, FormGroup, Label, Button } from 'reactstrap';
+import { Field, reduxForm } from 'redux-form';
+import { useHistory } from 'react-router-dom';
+import RenderInputName from './RenderInputName';
+import RenderSelectRace from './RenderSelectRace';
+import RenderSelectClass from './RenderSelectClass';
+import CharacterFormValidator from './CharacterFormValidator';
 
-const CharacterForm = ({ allClasses, allRaces, handleSubmit }) => {
+const CharacterForm = ({ allClasses, allRaces, handleSubmit, valid }) => {
 
     const history = useHistory()
 
-    const submit = () => {
+    const submitScores = () => {
         history.push("/generatescore")
     }
-
-    const [nameError, setNameError] = useState(false); //watches for any invalid name inputs
-
-    /*const handleBlurName = () => {
-        const regex = /[a-zA-Z][a-zA-Z ]+[a-zA-Z]$/ //regex checks that are all the name consists of non-numbers and the only white space comes between a first and last name
-        if (name && !regex.test(name)) {
-            setNameError(true);
-        } else {
-            setNameError(false);
-        }
-    }*/
 
     return (
         <Container fluid>
@@ -37,73 +28,40 @@ const CharacterForm = ({ allClasses, allRaces, handleSubmit }) => {
                 </Col>
                 <Col
                     className="mt-5">
-                    <Form onSubmit={handleSubmit(submit)}>
+                    <Form onSubmit={handleSubmit(submitScores)}>
                         <FormGroup className="mb-4">
-                            <Label for="name">Character Name: </Label>
+                            <Label for="name"> </Label>
                             <Field className="input-group"
-                                //invalid={nameError}
-                                component="input"
-                                type="text"
+                                component={RenderInputName}
                                 name="name"
-                                id="name"
-                                //onBlur={handleBlurName}
+                                validate={CharacterFormValidator}
+                                label="Character Name: "
+                                type="input"
                             />
-                            {nameError && <FormFeedback>Must enter a valid character name (no numbers or special characters, spaces only between letters).</FormFeedback>}
                         </FormGroup>
                         <FormGroup className="mb-3">
-                                <Label 
-                                    for="raceselector"
-                                >
-                                Select Race:  
-                                </Label>
-                                    <Field
-                                        className="input-group"
-                                        component="select"
-                                        id="raceselector"
-                                        name="race"
-                                        type="select"
-
-                                    >
-                                    <option value="" disabled hidden>Choose</option>
+                        <Field name="race" label="Select Race:" validate={CharacterFormValidator} component={RenderSelectRace}>
+                        <option value="" disabled hidden>Choose</option>
                                     {allRaces.map((race) => (
                                         <option key={race.id}>
                                             {race.title}
                                         </option>
                                     ))}
-                                    </Field>
-                            </FormGroup>
+                            </Field>
+                        </FormGroup>
                             <FormGroup 
                                 className="mb-2">
-                                <Label 
-                                    for="classselector"
-                                >
-                                Select Class: 
-                                </Label>
-                                    <Field
-                                        className="input-group"
-                                        component="select"
-                                        id="classselector"
-                                        name="classname"
-                                        type="select"
-  
-                                    >
-                                    <option value="" disabled hidden>Choose</option>
+                                <Field name="classname" label="Select Class:" validate={CharacterFormValidator} component={RenderSelectClass}>
+                        <option value="" disabled hidden>Choose</option>
                                     {allClasses.map((choice) => (
                                         <option key={choice.id}>
                                             {choice.title}
                                         </option>
                                     ))}
-                                    </Field>
+                            </Field>
                             </FormGroup>
-                            <Button type="submit" className="mt-5 float-end button btn lg">Next</Button>
+                            <Button type="submit" disabled={!valid} className="mt-5 float-end button btn lg">Next</Button>
                     </Form>
-
-                    {/*(classname && race) && (!nameError)
-                        ? 
-                        <Link to="/generatescore" className="mt-5 float-end button btn lg">Next
-                        </Link>
-                        :null
-                    */}
                 </Col>
             </Row>
         </Container>
