@@ -1,9 +1,11 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import GenerateScoresDisplay from './GenerateScoresDisplay';
+import { useDispatch } from 'react-redux';
+import { createScore } from '../../redux/scores/scoreActions';
 
-const GenerateScores = ({charactername, characterclass, characterrace}) => {
+const GenerateScores = () => {
 
-    const [abilityScores, setAbilityScores] = useState([]); //the ability scores, calculated upon component's mount
+    const dispatch = useDispatch()
 
     const rollDice = useRef(() => {})
 
@@ -25,6 +27,7 @@ const GenerateScores = ({charactername, characterclass, characterrace}) => {
 
         totalAbilityScores.sort((a,b) => a-b); //sorts the ability scores in ascending order
         createAbilityObjects(totalAbilityScores);
+        console.log(totalAbilityScores)
     }
 
 
@@ -41,29 +44,18 @@ const GenerateScores = ({charactername, characterclass, characterrace}) => {
             )
         }
         console.log(abilityScoresWithKeys)
-        setAbilityScores(abilityScoresWithKeys);
+        dispatch(createScore(abilityScoresWithKeys))
+        console.log('dispatched')
     }
 
     useEffect(() => {
         rollDice.current()
     }, [])
 
-    if (!charactername) {
-        return (
-            <div>
-                <p>Sorry, it looks like you failed to enter a character name.</p> 
-            </div>
-        )
-    } else {
     return (
         <GenerateScoresDisplay 
-            scores={abilityScores}
-            charactername={charactername} 
-            characterclass={characterclass} 
-            characterrace={characterrace}
         />
-      )
-    };
+      );
 }
  
 export default GenerateScores;

@@ -50,7 +50,7 @@ const AllScores = () => {
                             <CardBody>
                                 <Link to={`/allscores/${score.id}`} className="nav-link cardtitle">
                                     <CardTitle className="text-center">
-                                    {score.charactername}, the {score.characterclass} {score.characterrace}
+                                    {score.name}, the {score.classname} {score.race}
                                     </CardTitle>
                                 </Link>
                             </CardBody>
