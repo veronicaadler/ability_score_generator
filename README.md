@@ -1,10 +1,10 @@
 # Ability Score Generator
 
-Calculates ability scores used in Dungeons and Dragons v3.5 and recommends how ability scores should be assigned based on the given character's race and class. Allows for saving scores to the server, as well as adding comments and deleting scores.
+Calculates ability scores used in Dungeons and Dragons v3.5 and recommends how ability scores should be assigned based on the given character's race and class. Allows for saving scores to mock JSON server, as well as adding comments and deleting scores.
 
 ## Motivation
 
-This generator is a tool that takes care of the essential ability score calculations for Dungeons and Dragons gameplay, allowing a player to more quickly and easily build their characters.  It aims to be simple to use, especially for beginners who may struggle with the amount of preparation and calculations required to begin gameplay.
+This generator is a tool that takes care of the essential ability score calculations for Dungeons and Dragons gameplay, allowing a player to more quickly and easily build their characters.  It aims to be simple to use, especially for beginners.
 
 ## Installation
 * Clone / download ability_score_generator.
