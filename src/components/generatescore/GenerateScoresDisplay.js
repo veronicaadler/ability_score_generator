@@ -19,7 +19,7 @@ const GenerateScoresDisplay = () => {
         const serverscore = {name, race, classname, reduxscores, comments} 
         //creates the object that will be submitted to the json server
         setSubmitPending(true);
-        fetch('http://localhost:8000/scores', {
+        fetch('https://json-server-for-heroku.herokuapp.com/scores', {
             method: 'POST',
             headers: {'Content-type': 'application/json'}, 
             //tells the server the type of content we are sending
