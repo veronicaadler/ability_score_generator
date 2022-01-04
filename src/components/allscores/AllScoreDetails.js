@@ -12,7 +12,7 @@ const AllScoreDetails = () => {
     const history = useHistory();
 
     useEffect(() => {
-        fetch('http://localhost:8000/scores/' + id)
+        fetch('https://json-server-for-heroku.herokuapp.com/scores' + id)
             .then(res => {
                 if(!res.ok) {
                     throw Error('could not fetch your score.')
@@ -31,7 +31,7 @@ const AllScoreDetails = () => {
     }, [id])
 
     const handleClick = () => {
-        fetch('http://localhost:8000/allscores/' + score.id, {
+        fetch('https://json-server-for-heroku.herokuapp.com/scores' + score.id, {
             method: 'DELETE'
           }).then(() => {
             history.push('/allscores');

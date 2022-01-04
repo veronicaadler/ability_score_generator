@@ -9,7 +9,7 @@ const AllScores = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:8000/scores')
+        fetch('https://json-server-for-heroku.herokuapp.com/scores')
             .then(res => {
                 if(!res.ok) {
                     throw Error('could not fetch your scores.')

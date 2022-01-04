@@ -13,8 +13,8 @@ const CreateCharacterProfile = () => {
         const abortControl = new AbortController();
 
         Promise.all([
-            fetch('http://localhost:8000/classes'),
-            fetch('http://localhost:8000/races')
+            fetch('https://json-server-for-heroku.herokuapp.com/classes'),
+            fetch('https://json-server-for-heroku.herokuapp.com/races')
         ], { signal: abortControl.signal } )
                 .then(([res1, res2]) => {
                 if (!res1.ok || !res2.ok) {
