@@ -16,7 +16,8 @@
     "reactstrap": "^8.10.0",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
-    "redux-form": "^8.3.8"
+    "redux-form": "^8.3.8",
+    "web-vitals": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -42,7 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "web-vitals": "^2.1.2"
-  }
+  "devDependencies": {}
 }
