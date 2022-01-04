@@ -46,7 +46,7 @@ const AllScores = () => {
             <Row>
                 <Col>
                 {scores.map((score) => (
-                        <Card className="mb-3">
+                        <Card className="mb-3" key={score.id}>
                             <CardBody>
                                 <Link to={`/allscores/${score.id}`} className="nav-link cardtitle">
                                     <CardTitle className="text-center">
