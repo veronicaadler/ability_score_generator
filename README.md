@@ -1,6 +1,6 @@
 # Ability Score Generator
 
-Calculates ability scores used in Dungeons and Dragons v3.5 and recommends how ability scores should be assigned based on the given character's race and class. Allows for saving scores to mock JSON server, as well as adding comments and deleting scores.
+Calculates ability scores used in Dungeons and Dragons v3.5 and recommends how ability scores should be assigned based on the given character's race and class. Allows for saving scores as well as adding comments and deleting scores.
 
 ## Motivation
 
@@ -13,14 +13,11 @@ This generator is a tool that takes care of the essential ability score calculat
 ```
 $ npm install
 ```
-* Once installation is complete, enter the following command in the terminal to begin the .json server:
-```
-$ npx json-server --watch data/db.json --port 8000
-```
-* Open a second terminal in the ability_score_generator folder and start the server with:
+* Once complete, start the server with:
 ```
 $ npm start
 ```
+* Note:  A web browser should automatically open to the ability_score_generator.  If not, you can open a browser and manually navigate to http://localhost:3000/.
 
 ## Acknowledgements
 
