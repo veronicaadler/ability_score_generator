@@ -19,6 +19,14 @@ $ npm start
 ```
 * Note:  A web browser should automatically open to the ability_score_generator.  If not, you can open a browser and manually navigate to http://localhost:3000/.
 
+## Screenshots
+
+![Screenshot of homepage](public/assets/screenshots/homepage.png)
+
+![Screenshot of input form](public/assets/screenshots/inputform.png)
+
+![Screenshot of results page](public/assets/screenshots/resultspage.png)
+
 ## Acknowledgements
 
 Logo designed with [Adobe Spark](https://www.adobe.com/express/create/logo).
