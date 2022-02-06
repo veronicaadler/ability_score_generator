@@ -7,7 +7,7 @@ const renderRaceMsg = (characterrace) => {
         case "Gnome":
             return <div>Gnomes receive a +2 modifier to Constitution, but their small size causes them to take a -2 hit to Strength.</div>
         case "Half-Orc":
-            return <div>Half-orcs receive a +2 bonus to -2, but take a hit with -2 Intelligence and -2 Charisma. </div>
+            return <div>Half-orcs receive a +2 bonus to Strength, but take a hit with -2 Intelligence and -2 Charisma. </div>
         case "Dwarf":
             return <div>Dwarves receive a +2 bonus to Constitution, but take a -2 hit to Charisma.</div>
         case "Half-elf":
