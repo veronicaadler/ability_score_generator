@@ -22,10 +22,6 @@ const ScoresDisplay = () => {
   const { name, race, classname } = useSelector(
     (state) => state.form.character.values
   );
-
-  if(name || race || classname === undefined) {
-    console.log('undefined')
-  }
   const reduxscores = useSelector((state) => state.abilityscores.score);
 
   const handleSubmit = (event) => {
