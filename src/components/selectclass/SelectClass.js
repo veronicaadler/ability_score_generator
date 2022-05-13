@@ -1,4 +1,4 @@
-const RenderSelectClass = ({
+const SelectClass = ({
   input,
   label,
   meta: { touched, error },
@@ -15,4 +15,4 @@ const RenderSelectClass = ({
   </div>
 );
 
-export default RenderSelectClass;
+export default SelectClass;

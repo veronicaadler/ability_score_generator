@@ -10,10 +10,10 @@ import {
   Button,
   CardSubtitle,
 } from "reactstrap";
-import useFetch from "../shared/useFetch";
-import ErrorMsg from "../shared/ErrorMsg";
+import useFetch from '../../components/shared/useFetch';
+import ErrorMsg from '../../components/shared/ErrorMsg';
 
-const AllScoreDetails = () => {
+const SingleScore = () => {
   const { id } = useParams();
   const history = useHistory();
 
@@ -73,4 +73,4 @@ const AllScoreDetails = () => {
   }
 };
 
-export default AllScoreDetails;
+export default SingleScore;

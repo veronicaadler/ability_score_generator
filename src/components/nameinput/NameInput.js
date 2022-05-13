@@ -1,4 +1,4 @@
-const RenderInputName = ({ input, label, type, meta: { touched, error } }) => (
+const NameInput = ({ input, label, type, meta: { touched, error } }) => (
   <div>
     <label>{label}</label>
     <div>
@@ -8,4 +8,4 @@ const RenderInputName = ({ input, label, type, meta: { touched, error } }) => (
   </div>
 );
 
-export default RenderInputName;
+export default NameInput;

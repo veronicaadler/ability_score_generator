@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import CharacterForm from '../characterform/CharacterForm';
-import ErrorMsg from '../shared/ErrorMsg';
+import CharacterForm from '../../components/characterform/CharacterForm';
+import ErrorMsg from '../../components/shared/ErrorMsg';
 
-const CreateCharacterProfile = () => {
+const Create = () => {
 
     const [possibleClasses, setPossibleClasses] = useState([]);
     const [possibleRaces, setPossibleRaces] = useState([]);
@@ -54,4 +54,4 @@ const CreateCharacterProfile = () => {
       )};
 }
  
-export default CreateCharacterProfile;
+export default Create;

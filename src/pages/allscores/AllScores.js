@@ -1,7 +1,7 @@
 import { Container, Row, Col, Card, CardBody, CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import useFetch from '../shared/useFetch';
-import ErrorMsg from '../shared/ErrorMsg';
+import useFetch from '../../components/shared/useFetch';
+import ErrorMsg from '../../components/shared/ErrorMsg';
 
 
 const AllScores = () => {

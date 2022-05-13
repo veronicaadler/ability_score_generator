@@ -1,8 +1,8 @@
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react'
-import ClassMsg from '../classmsg/ClassMsg';
-import RaceMsg from '../racemsg/RaceMsg';
+import ClassMsg from '../../components/classmsg/ClassMsg';
+import RaceMsg from '../../components/racemsg/RaceMsg';
 import { useSelector } from 'react-redux';
 
 const GenerateScoresDisplay = () => {

@@ -1,11 +1,11 @@
 import './App.css';
-import Home from "./components/home/Home";
-import Header from "./components/shared/Header";
-import CreateCharacterProfile from './components/characterprofile/CreateCharacterProfile';
-import GenerateScores from "./components/generatescore/GenerateScores";
-import AllScores from './components/allscores/AllScores'
-import About from './components/about/About';
-import AllScoreDetails from './components/allscores/AllScoreDetails';
+import Home from '../src/pages/home/Home';
+import Header from './components/shared/Header';
+import Create from '../src/pages/create/Create';
+import Generate from "../src/pages/generate/Generate";
+import AllScores from '../src/pages/allscores/AllScores';
+import About from '../src/pages/about/About';
+import SingleScore from '../src/pages/singlescore/SingleScore';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import {
@@ -28,16 +28,16 @@ const App = () => {
               <Home />
             </Route>
             <Route path="/create">
-              <CreateCharacterProfile />
+              <Create />
             </Route>
             <Route path="/generatescore">
-              <GenerateScores />
+              <Generate />
             </Route>
             <Route exact path="/allscores">
               <AllScores />
             </Route>
             <Route exact path='/allscores/:id'>
-              <AllScoreDetails />
+              <SingleScore />
             </Route>
             <Route path="/about">
               <About />

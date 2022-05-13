@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import GenerateScoresDisplay from './GenerateScoresDisplay';
+import GenerateScoresDisplay from '../../pages/Generate';
 import { useDispatch } from 'react-redux';
 import { createScore } from '../../redux/scores/scoreActions';
 

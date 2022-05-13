@@ -1,4 +1,4 @@
-const RenderSelectRace = ({
+const SelectRace = ({
   input,
   label,
   meta: { touched, error },
@@ -13,4 +13,4 @@ const RenderSelectRace = ({
   </div>
 );
 
-export default RenderSelectRace;
+export default SelectRace;
