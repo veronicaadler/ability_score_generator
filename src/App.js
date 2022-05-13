@@ -2,7 +2,7 @@ import "./App.css";
 import Home from "../src/pages/home/Home";
 import Header from "./components/shared/Header";
 import Create from "../src/pages/create/Create";
-import Generate from "../src/pages/generate/Generate";
+import Generate from "./pages/generate/Generate";
 import AllScores from "../src/pages/allscores/AllScores";
 import About from "../src/pages/about/About";
 import SingleScore from "../src/pages/singlescore/SingleScore";
