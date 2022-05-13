@@ -9,10 +9,10 @@ import {
 } from "reactstrap";
 import { Field, reduxForm } from "redux-form";
 import { useHistory } from "react-router-dom";
-import RenderInputName from "./RenderInputName";
-import RenderSelectRace from "./RenderSelectRace";
-import RenderSelectClass from "./RenderSelectClass";
-import CharacterFormValidator from "./CharacterFormValidator";
+import NameInput from "../nameinput/NameInput";
+import SelectRace from "../selectrace/SelectRace";
+import SelectClass from "../selectclass/SelectClass";
+import CharacterFormValidator from "../formvalidator/CharacterFormValidator";
 
 const CharacterForm = ({ allClasses, allRaces, handleSubmit, valid }) => {
   const history = useHistory();
@@ -37,7 +37,7 @@ const CharacterForm = ({ allClasses, allRaces, handleSubmit, valid }) => {
               <Label for="name"> </Label>
               <Field
                 className="input-group"
-                component={RenderInputName}
+                component={NameInput}
                 name="name"
                 validate={CharacterFormValidator}
                 label="Character Name:"
@@ -49,7 +49,7 @@ const CharacterForm = ({ allClasses, allRaces, handleSubmit, valid }) => {
                 name="race"
                 label="Select Race:"
                 validate={CharacterFormValidator}
-                component={RenderSelectRace}
+                component={SelectRace}
               >
                 <option value="" disabled hidden>
                   Choose
@@ -64,7 +64,7 @@ const CharacterForm = ({ allClasses, allRaces, handleSubmit, valid }) => {
                 name="classname"
                 label="Select Class:"
                 validate={CharacterFormValidator}
-                component={RenderSelectClass}
+                component={SelectClass}
               >
                 <option value="" disabled hidden>
                   Choose

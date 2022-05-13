@@ -1,9 +1,4 @@
-const RenderSelectRace = ({
-  input,
-  label,
-  meta: { touched, error },
-  children,
-}) => (
+const SelectRace = ({ input, label, meta: { touched, error }, children }) => (
   <div>
     <label>{label}</label>
     <div>
@@ -13,4 +8,4 @@ const RenderSelectRace = ({
   </div>
 );
 
-export default RenderSelectRace;
+export default SelectRace;
