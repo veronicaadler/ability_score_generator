@@ -1,4 +1,4 @@
-const renderClassMsg = (characterclass) => {
+const ClassMsg = (characterclass) => {
     switch(characterclass) {
         case "Barbarian":
             return <div>Barbarians should give their highest scores to Strength, Dexterity, Constitution and Wisdom.</div>
@@ -24,4 +24,4 @@ const renderClassMsg = (characterclass) => {
 
 }}
 
-export default renderClassMsg;
+export default ClassMsg;

@@ -27,7 +27,6 @@ const GenerateScores = () => {
 
         totalAbilityScores.sort((a,b) => a-b); //sorts the ability scores in ascending order
         createAbilityObjects(totalAbilityScores);
-        console.log(totalAbilityScores)
     }
 
 
@@ -43,9 +42,7 @@ const GenerateScores = () => {
                 }
             )
         }
-        console.log(abilityScoresWithKeys)
         dispatch(createScore(abilityScoresWithKeys))
-        console.log('dispatched')
     }
 
     useEffect(() => {

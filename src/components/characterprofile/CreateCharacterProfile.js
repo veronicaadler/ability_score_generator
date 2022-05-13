@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import CharacterForm from './CharacterForm';
-import LoadingComponent from '../shared/LoadingComponent';
+import CharacterForm from '../characterform/CharacterForm';
+import ErrorMsg from '../shared/ErrorMsg';
 
 const CreateCharacterProfile = () => {
 
@@ -41,14 +41,11 @@ const CreateCharacterProfile = () => {
     }, []);
 
 
-    if (error) {
+    if (error || isPending) {
         return (
-          <div>{ error }</div>
-          )}
-    if (isPending) {
-         return (
-            <LoadingComponent />
-         )}
+          <ErrorMsg error={error} isPending={isPending} />
+        )
+    }
     else {
         return (
             <CharacterForm 

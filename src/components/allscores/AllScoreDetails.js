@@ -1,52 +1,41 @@
-import { useParams, useHistory } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import {Container, Row, Col, Card, CardBody, CardTitle, CardText, Button, CardSubtitle} from 'reactstrap';
+import { useParams, useHistory } from "react-router-dom";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardBody,
+  CardTitle,
+  CardText,
+  Button,
+  CardSubtitle,
+} from "reactstrap";
+import useFetch from "../shared/useFetch";
+import ErrorMsg from "../shared/ErrorMsg";
 
 const AllScoreDetails = () => {
+  const { id } = useParams();
+  const history = useHistory();
 
-    const [score, setScore] = useState([]); //stores the individual score data from the json server
-    const [isPending, setIsPending] = useState(true); //we will use this to later create loading animation
-    const [error, setError] = useState(null);
+  const {
+    data: score,
+    isPending,
+    error,
+  } = useFetch("https://json-server-for-heroku.herokuapp.com/scores/" + id);
 
-    const { id } = useParams();
-    const history = useHistory();
+  const handleClick = () => {
+    fetch("https://json-server-for-heroku.herokuapp.com/scores/" + score.id, {
+      method: "DELETE",
+    }).then(() => {
+      history.push("/allscores");
+    });
+  };
 
-    useEffect(() => {
-        fetch('https://json-server-for-heroku.herokuapp.com/scores/' + id)
-            .then(res => {
-                if(!res.ok) {
-                    throw Error('could not fetch your score.')
-                }
-                return res.json();
-            })
-            .then(data => {
-                setScore(data);
-                setIsPending(false);
-                setError(null)
-            })
-            .catch(err => {
-                setIsPending(false);
-                setError(err.message)
-            })
-    }, [id])
-
-    const handleClick = () => {
-        fetch('https://json-server-for-heroku.herokuapp.com/scores/' + score.id, {
-            method: 'DELETE'
-          }).then(() => {
-            history.push('/allscores');
-          }) 
-        }
-
-    if (error) {
-        return (
-          <div>{ error }</div>
-          )}
-    if (isPending) {
-         return (
-         <div>Loading...</div>
-         )}
-    else {
+  if (error || isPending) {
+    return (
+      <ErrorMsg error={error} isPending={isPending} />
+    )
+} else {
     return (
       <Container>
         <Row>
@@ -56,9 +45,7 @@ const AllScoreDetails = () => {
                 <CardTitle>Scores:</CardTitle>
                 <CardSubtitle className="text-center">
                   {score.reduxscores.map((ability) => (
-                    <span key={ability.id}
-                      className="m-2 col-12 spanscore"
-                    >
+                    <span key={ability.id} className="m-2 col-12 spanscore">
                       {ability.score}
                     </span>
                   ))}
@@ -67,8 +54,8 @@ const AllScoreDetails = () => {
                       Comments: {score.comments}
                     </div>
                   )}
-                  </CardSubtitle>
-                  <CardText className="mt-4">
+                </CardSubtitle>
+                <CardText className="mt-4">
                   <Button
                     onClick={handleClick}
                     style={{ backgroundColor: "#939C82" }}
@@ -82,7 +69,8 @@ const AllScoreDetails = () => {
           </Col>
         </Row>
       </Container>
-    );};
-}
- 
+    );
+  }
+};
+
 export default AllScoreDetails;

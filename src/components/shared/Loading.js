@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons'
 import {Container, Row, Col} from 'reactstrap';
 
-const LoadingComponent = () => {
+const Loading = () => {
     return (
         <Container fluid>
             <Row>
@@ -14,4 +14,4 @@ const LoadingComponent = () => {
       );
 }
  
-export default LoadingComponent;
+export default Loading;

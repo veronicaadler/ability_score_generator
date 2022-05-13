@@ -9,10 +9,10 @@ import {
 } from "reactstrap";
 import { Field, reduxForm } from "redux-form";
 import { useHistory } from "react-router-dom";
-import RenderInputName from "./RenderInputName";
-import RenderSelectRace from "./RenderSelectRace";
-import RenderSelectClass from "./RenderSelectClass";
-import CharacterFormValidator from "./CharacterFormValidator";
+import RenderInputName from "../characterprofile/RenderInputName";
+import RenderSelectRace from "../characterprofile/RenderSelectRace";
+import RenderSelectClass from "../characterprofile/RenderSelectClass";
+import CharacterFormValidator from "../characterformvalidator/CharacterFormValidator";
 
 const CharacterForm = ({ allClasses, allRaces, handleSubmit, valid }) => {
   const history = useHistory();

@@ -1,40 +1,19 @@
-import { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, CardBody, CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import useFetch from '../shared/useFetch';
+import ErrorMsg from '../shared/ErrorMsg';
+
 
 const AllScores = () => {
 
-    const [scores, setScores] = useState([]);
-    const [isPending, setIsPending] = useState(true); //we will use this to later create loading animation
-    const [error, setError] = useState(null);
+    const { data: scores, isPending, error } = useFetch('https://json-server-for-heroku.herokuapp.com/scores')
 
-    useEffect(() => {
-        fetch('https://json-server-for-heroku.herokuapp.com/scores')
-            .then(res => {
-                if(!res.ok) {
-                    throw Error('could not fetch your scores.')
-                }
-                return res.json();
-            })
-            .then(data => {
-                setScores(data);
-                setIsPending(false);
-                setError(null)
-            })
-            .catch(err => {
-                setIsPending(false);
-                setError(err.message)
-            })
-    }, [])
 
-    if (error) {
+    if (error || isPending) {
         return (
-          <div>{ error }</div>
-          )}
-    if (isPending) {
-         return (
-         <div>Loading...</div>
-         )}
+          <ErrorMsg error={error} isPending={isPending} />
+        )
+    }
     else {
     return (
         <Container>

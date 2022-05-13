@@ -1,4 +1,4 @@
-const renderRaceMsg = (characterrace) => {
+const RaceMsg = (characterrace) => {
     switch(characterrace) {
         case "Human":
             return <div>Humans have no bonuses or penalties to ability scores due to size. </div>
@@ -18,4 +18,4 @@ const renderRaceMsg = (characterrace) => {
             return <div>No info.</div>
 }}
 
-export default renderRaceMsg;
+export default RaceMsg;

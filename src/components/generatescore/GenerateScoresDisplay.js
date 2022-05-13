@@ -1,8 +1,8 @@
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react'
-import renderClassMsg from './RenderClassMsg';
-import renderRaceMsg from './RenderRaceMsg';
+import ClassMsg from '../classmsg/ClassMsg';
+import RaceMsg from '../racemsg/RaceMsg';
 import { useSelector } from 'react-redux';
 
 const GenerateScoresDisplay = () => {
@@ -25,7 +25,6 @@ const GenerateScoresDisplay = () => {
             //tells the server the type of content we are sending
             body: JSON.stringify(serverscore)
         }).then(() => {
-            console.log('scores saved');
             setSubmitPending(false);
             history.push('/allscores');
         })
@@ -47,8 +46,8 @@ const GenerateScoresDisplay = () => {
         </Row>
         <Row className="mb-4 border border-dark border-5 rounded m-1 scores">
             <Col>
-                <h3 className="fontgroup">As a {classname}...<span className="text-center">{renderClassMsg(classname)}</span></h3>
-                <h3 className="fontgroup">As a {race}...<span className="text-center">{renderRaceMsg(race)}</span></h3>
+                <h3 className="fontgroup">As a {classname}...<span className="text-center">{ClassMsg(classname)}</span></h3>
+                <h3 className="fontgroup">As a {race}...<span className="text-center">{RaceMsg(race)}</span></h3>
             </Col>
         </Row>
         <Form onSubmit={handleSubmit}>
