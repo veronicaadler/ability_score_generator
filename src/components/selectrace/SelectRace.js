@@ -1,9 +1,4 @@
-const SelectRace = ({
-  input,
-  label,
-  meta: { touched, error },
-  children,
-}) => (
+const SelectRace = ({ input, label, meta: { touched, error }, children }) => (
   <div>
     <label>{label}</label>
     <div>

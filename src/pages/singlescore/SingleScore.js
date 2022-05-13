@@ -10,8 +10,8 @@ import {
   Button,
   CardSubtitle,
 } from "reactstrap";
-import useFetch from '../../components/shared/useFetch';
-import ErrorMsg from '../../components/shared/ErrorMsg';
+import useFetch from "../../components/shared/useFetch";
+import ErrorMsg from "../../components/shared/ErrorMsg";
 
 const SingleScore = () => {
   const { id } = useParams();
@@ -32,10 +32,8 @@ const SingleScore = () => {
   };
 
   if (error || isPending) {
-    return (
-      <ErrorMsg error={error} isPending={isPending} />
-    )
-} else {
+    return <ErrorMsg error={error} isPending={isPending} />;
+  } else {
     return (
       <Container>
         <Row>
